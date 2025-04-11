@@ -218,6 +218,32 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local original_bg = nil
 local original_sign_bg = nil
 
+-- Function to darken a color
+local function darken_color(hex_color, factor)
+  if not hex_color then
+    return nil
+  end
+
+  -- Convert from number to hex string if needed
+  local hex_str = hex_color
+  if type(hex_color) == 'number' then
+    hex_str = string.format('#%06x', hex_color)
+  end
+
+  -- Extract RGB components
+  local r = tonumber(string.sub(hex_str, 2, 3), 16) or 0
+  local g = tonumber(string.sub(hex_str, 4, 5), 16) or 0
+  local b = tonumber(string.sub(hex_str, 6, 7), 16) or 0
+
+  -- Darken by multiplying by factor (less than 1.0)
+  r = math.floor(r * factor)
+  g = math.floor(g * factor)
+  b = math.floor(b * factor)
+
+  -- Convert back to hex
+  return string.format('#%02x%02x%02x', r, g, b)
+end
+
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     -- Get the background color after colorscheme is applied
@@ -244,11 +270,21 @@ vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
       local sign_hl = vim.api.nvim_get_hl(0, { name = 'SignColumn' })
       original_sign_bg = sign_hl.bg
     end
-    -- Change the background color in insert mode
-    vim.api.nvim_set_hl(0, 'Normal', { bg = '#1a1a1a' })
-    -- Change the SignColumn background color in insert mode
-    -- Use a slightly darker shade for the sign column
-    vim.api.nvim_set_hl(0, 'SignColumn', { bg = '#161616' })
+
+    -- If transparent mode is enabled, use a default dark color
+    if not original_bg then
+      vim.api.nvim_set_hl(0, 'Normal', { bg = '#2d0a3b' })
+      vim.api.nvim_set_hl(0, 'SignColumn', { bg = '#2d0a3b' })
+      return
+    end
+
+    -- Darken the original background color (factor 0.7 means 70% brightness)
+    local darker_bg = darken_color(original_bg, 0.7)
+    local darker_sign_bg = darken_color(original_sign_bg or original_bg, 0.65)
+
+    -- Apply the darkened colors
+    vim.api.nvim_set_hl(0, 'Normal', { bg = darker_bg })
+    vim.api.nvim_set_hl(0, 'SignColumn', { bg = darker_sign_bg })
   end,
 })
 
@@ -915,25 +951,40 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+  -- { -- You can easily change to a different colorscheme.
+  --   -- Change the name of the colorscheme plugin below, and then
+  --   -- change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   config = function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require('tokyonight').setup {
+  --       styles = {
+  --         comments = { italic = false }, -- Disable italics in comments
+  --       },
+  --     }
+  --     -- Load the colorscheme here.
+  --     -- Like many other themes, this one has different styles, and you could load
+  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+  --     vim.cmd.colorscheme 'tokyonight-storm'
+  --   end,
+  -- },
+
+  { -- Cyberdream colorscheme with custom contrast and transparency
+    'scottmckendry/cyberdream.nvim', -- Replace this with the correct repo if different
+    priority = 1000, -- Ensure it loads before other UI plugins
+    lazy = false, -- Load this plugin at startup
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
+      require('cyberdream').setup {
+        saturation = 0.5, -- Set to a value less than 1.0 for slightly less contrast
+        transparent = false, -- Enable a bit of transparency
+        colors = {
+          bg = '#24252F',
         },
       }
-
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'cyberdream'
     end,
   },
 
@@ -1009,6 +1060,7 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       vim.g.ministatusline_disable = true -- Disable the original status line declared above
+
       require('lualine').setup {
         options = {
           icons_enabled = true,
