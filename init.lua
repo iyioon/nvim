@@ -957,16 +957,32 @@ require('lazy').setup({
   },
 
   -- My Own Plugins
-  { -- Add Scroll Bar
-    'petertriho/nvim-scrollbar',
+  { -- Status bar
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('scrollbar').setup {
-        handle = {
-          -- Make the handle more prominent with a brighter color
-          color = '#ff9e64',
+      vim.g.ministatusline_disable = true -- Disable the original status line declared above
+      require('lualine').setup {
+        options = {
+          icons_enabled = true,
+          theme = 'auto',
+          component_separators = '|',
+          section_separators = '',
         },
-        handlers = {
-          cursor = false, -- Disables the cursor marker i.e., The dot inside the handle
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff' },
+          lualine_c = { 'filename' },
+          lualine_x = {
+            {
+              'diagnostics',
+              sources = { 'nvim_diagnostic' },
+              symbols = { error = 'E:', warn = 'W:', info = 'I:', hint = 'H:' },
+            },
+            'filetype',
+          },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
         },
       }
     end,
