@@ -214,6 +214,53 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Store the original colors when Neovim starts
+local original_bg = nil
+local original_sign_bg = nil
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    -- Get the background color after colorscheme is applied
+    local normal_hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
+    original_bg = normal_hl.bg
+
+    -- Get the SignColumn background color
+    local sign_hl = vim.api.nvim_get_hl(0, { name = 'SignColumn' })
+    original_sign_bg = sign_hl.bg
+  end,
+  once = false,
+})
+
+-- Run immediately to get the current colors
+vim.cmd 'doautocmd ColorScheme'
+
+-- Change the background color in insert mode
+vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+  callback = function()
+    -- Store the current colors if we haven't already
+    if not original_bg then
+      local normal_hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
+      original_bg = normal_hl.bg
+      local sign_hl = vim.api.nvim_get_hl(0, { name = 'SignColumn' })
+      original_sign_bg = sign_hl.bg
+    end
+    -- Change the background color in insert mode
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#1a1a1a' })
+    -- Change the SignColumn background color in insert mode
+    -- Use a slightly darker shade for the sign column
+    vim.api.nvim_set_hl(0, 'SignColumn', { bg = '#161616' })
+  end,
+})
+
+-- Restore the original colors when leaving insert mode
+vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+  callback = function()
+    -- Restore the original colors
+    vim.api.nvim_set_hl(0, 'Normal', { bg = original_bg })
+    vim.api.nvim_set_hl(0, 'SignColumn', { bg = original_sign_bg })
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -988,6 +1035,79 @@ require('lazy').setup({
     end,
   },
 
+  'github/copilot.vim',
+
+  { -- Allow you to pick a window to open a file in
+    's1n7ax/nvim-window-picker',
+    name = 'window-picker',
+    event = 'VeryLazy',
+    version = '2.*',
+    config = function()
+      require('window-picker').setup {
+        selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        hint = 'floating-big-letter',
+        picker_config = {
+          handle_mouse_click = true,
+        },
+      }
+    end,
+  },
+
+  { -- NeoTree for file explorer
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    },
+    cmd = 'Neotree',
+    keys = {
+      { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Toggle Explorer' },
+      { '<leader>o', '<cmd>Neotree focus<cr>', desc = 'Focus Explorer' },
+    },
+    config = function()
+      require('neo-tree').setup {
+        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+        window = {
+          width = 30,
+          mappings = {
+            ['<space>'] = 'none', -- Disable space mapping to not conflict with leader key
+          },
+        },
+        filesystem = {
+          follow_current_file = {
+            enabled = true, -- Focus the file that's currently being edited
+          },
+          use_libuv_file_watcher = true, -- Use the system file watcher to auto refresh
+          filtered_items = {
+            visible = true, -- When true, hidden files will be shown
+            hide_dotfiles = false,
+            hide_gitignored = false,
+          },
+          window = {
+            mappings = {
+              -- This is the key configuration to auto-close when opening files
+              ['o'] = 'open_with_window_picker',
+              ['<cr>'] = 'open_with_window_picker',
+              ['s'] = 'open_split',
+              ['v'] = 'open_vsplit',
+            },
+          },
+        },
+        event_handlers = {
+          {
+            -- This is the key event that closes Neo-tree after opening a file
+            event = 'file_opened',
+            handler = function()
+              require('neo-tree.command').execute { action = 'close' }
+            end,
+          },
+        },
+      }
+    end,
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -1001,7 +1121,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
