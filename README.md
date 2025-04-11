@@ -10,7 +10,9 @@ A starting point for Neovim that is:
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
-**Guide:** [https://www.youtube.com/watch?v=m8C0Cq9Uv9o&t=9s](https://www.youtube.com/watch?v=m8C0Cq9Uv9o&t=9s)
+**Video Guide:** [https://www.youtube.com/watch?v=m8C0Cq9Uv9o&t=9s](https://www.youtube.com/watch?v=m8C0Cq9Uv9o&t=9s)
+
+**Make Sure to Install NERDFONT on your terminal** 
 
 ## Installation
 
