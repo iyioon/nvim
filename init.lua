@@ -297,6 +297,46 @@ vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
   end,
 })
 
+-- Auto-save and compile LaTeX files on InsertLeave
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'tex', 'latex' },
+  callback = function()
+    -- Create a buffer-local autocmd for InsertLeave
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      buffer = 0, -- 0 means current buffer
+      callback = function()
+        -- Save the file if it's modified
+        if vim.bo.modified then
+          vim.cmd 'silent write'
+
+          -- Check if VimTeX compilation is already running
+          local vimtex_data = vim.b.vimtex
+          if vimtex_data and vimtex_data.compiler and not vimtex_data.compiler.is_running then
+            -- If not running, start compilation
+            vim.cmd 'VimtexCompile'
+          end
+        end
+      end,
+      desc = 'Auto-save and compile LaTeX on insert mode exit',
+    })
+
+    -- Let the user know this feature is enabled
+    vim.notify('Auto-save and compile on insert mode exit enabled for LaTeX', vim.log.levels.INFO)
+  end,
+})
+
+-- Supress error message
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VimtexEventCompileFailed',
+  callback = function()
+    -- Check if PDF exists despite "failure"
+    local pdf_file = vim.fn.expand '%:r' .. '.pdf'
+    if vim.fn.filereadable(pdf_file) == 1 then
+      vim.notify('PDF Generated', vim.log.levels.INFO)
+    end
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -1046,7 +1086,7 @@ require('lazy').setup({
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
-        disable = { 'tex' }, -- Disable highlighting for LaTeX files (will be handled by vimtex)
+        disable = { 'tex', 'latex' }, -- Disable highlighting for LaTeX files (will be handled by vimtex)
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
@@ -1192,9 +1232,6 @@ require('lazy').setup({
 
       -- Don't open QuickFix for warnings
       vim.g.vimtex_quickfix_mode = 0
-
-      -- Don't automatically open PDF viewer after first compilation
-      vim.g.vimtex_view_automatic = 0
 
       -- Disable custom warnings based on regexp
       vim.g.vimtex_quickfix_ignore_filters = {
