@@ -124,7 +124,7 @@ examples of adding popularly requested plugins.
 
 #### LSP Recommendations
 
-Below is a list of recommended LSP servers for various languages:
+Below is a list of recommended LSP servers for various languages (use `:Mason` to donwload):
 
 | Tool / Server                | Description                                                             |
 | :--------------------------- | :---------------------------------------------------------------------- |
