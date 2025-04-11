@@ -12,6 +12,7 @@ Beyond the standard kickstart configuration, this configuration includes:
 - **Github Copilot**: Integrated into Neovim for code suggestions
 - **Background Color Change During Insert Mode**: The background color changes to a darker shade when in insert mode
 - **Window Picker**: A plugin that allows you to easily select the window you want to open the file in (use together with Neo-tree)
+- **Markdown Preview**: A plugin that allows you to preview markdown files in a browser (using `:MarkdownPreview`)
 
 ## Installation
 
@@ -30,7 +31,7 @@ External Requirements:
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - Clipboard tool (xclip/xsel/win32yank or other depending on the platform)
 - A [Nerd Font](https://www.nerdfonts.com/): provides various icons
-  - if you dont have it, set `vim.g.have_nerd_font` in `init.lua` to false 
+  - if you dont have it, set `vim.g.have_nerd_font` in `init.lua` to false
 - Emoji fonts (Ubuntu only, and only if you want emoji!) `sudo apt install fonts-noto-color-emoji`
 - Language Setup:
   - If you want to write Typescript, you need `npm`
@@ -116,6 +117,22 @@ examples of adding popularly requested plugins.
 
 > [!NOTE]
 > For more information about a particular plugin check its repository's documentation.
+
+#### LSP Recommendations
+
+Below is a list of recommended LSP servers for various languages:
+
+| Tool / Server                | Description                                                             |
+| :--------------------------- | :---------------------------------------------------------------------- |
+| clangd                       | C/C++ language server, offering code <br> completion, diagnostics, etc. |
+| css-Isp (cssls)              | Language server for CSS, providing <br> completions, linting, etc.      |
+| html-Isp (html)              | Language server for HTML.                                               |
+| jdtls                        | Java language server (JDT, Eclipse-based). <br> development in Neovim.  |
+| lua-language-server (lua_ls) | Lua language server used for Lua development in Neovim                  |
+| marksman                     | Markdown language server for linting, completion, etc                   |
+| prettier                     | Code formatter for various languages                                    |
+| pyright                      | Python language server                                                  |
+| stylua                       | Lua code formatter                                                      |
 
 ### Getting Started
 
@@ -249,4 +266,3 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 
 </details>
-

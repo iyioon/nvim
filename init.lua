@@ -1140,7 +1140,6 @@ require('lazy').setup({
           },
           window = {
             mappings = {
-              -- This is the key configuration to auto-close when opening files
               ['o'] = 'open_with_window_picker',
               ['<cr>'] = 'open_with_window_picker',
               ['s'] = 'open_split',
@@ -1149,16 +1148,26 @@ require('lazy').setup({
           },
         },
         event_handlers = {
-          {
-            -- This is the key event that closes Neo-tree after opening a file
-            event = 'file_opened',
-            handler = function()
-              require('neo-tree.command').execute { action = 'close' }
-            end,
-          },
+          -- {
+          --   -- This is the key event that closes Neo-tree after opening a file
+          --   event = 'file_opened',
+          --   handler = function()
+          --     require('neo-tree.command').execute { action = 'close' }
+          --   end,
+          -- },
         },
       }
     end,
+  },
+
+  { -- Markdown Preview
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'cd app && yarn install',
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
+    ft = { 'markdown' },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
