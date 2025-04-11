@@ -13,7 +13,7 @@ Beyond the standard kickstart configuration, this configuration includes:
 - **Background Color Change During Insert Mode**: The background color changes to a darker shade when in insert mode
 - **Window Picker**: A plugin that allows you to easily select the window you want to open the file in (use together with Neo-tree)
 - **Markdown Preview**: A plugin that allows you to preview markdown files in a browser (using `:MarkdownPreview`)
-- **Latex Support**: Using vimtex, latexindent. Make sure to install:
+- **Latex Support**: Make sure to install:
   - LaTeX distribution - MacTeX for Mac
   - PDF viewer - Skim for Mac. Update init.lua to use other viewer if modified.
   - LSP - texlab, latexindent
