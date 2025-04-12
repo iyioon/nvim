@@ -200,6 +200,59 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Inserting template files for latex
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'tex', 'latex' },
+  callback = function()
+    vim.keymap.set('n', '<leader>nt', function()
+      local template_dir = vim.fn.expand '~/.config/nvim/snippets/templates/latex'
+
+      require('telescope.builtin').find_files {
+        prompt_title = 'LaTeX Templates',
+        cwd = template_dir,
+        attach_mappings = function(_, map)
+          map('i', '<CR>', function(prompt_bufnr)
+            -- Get selected file
+            local selection = require('telescope.actions.state').get_selected_entry()
+            require('telescope.actions').close(prompt_bufnr)
+
+            if selection then
+              -- Read file content
+              local file = io.open(selection.path, 'r')
+              if not file then
+                return
+              end
+
+              local content = file:read '*all'
+              file:close()
+
+              -- Wait briefly after closing telescope
+              vim.defer_fn(function()
+                -- Ensure buffer is modifiable
+                local bufnr = vim.api.nvim_get_current_buf()
+                local was_modifiable = vim.bo[bufnr].modifiable
+                vim.bo[bufnr].modifiable = true
+
+                -- Split content and replace buffer
+                local lines = {}
+                for line in content:gmatch '[^\r\n]+' do
+                  table.insert(lines, line)
+                end
+
+                vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+
+                -- Restore modifiable
+                vim.bo[bufnr].modifiable = was_modifiable
+              end, 100) -- Small delay to ensure telescope is fully closed
+            end
+          end)
+          return true
+        end,
+      }
+    end, { buffer = true, desc = 'Pick LaTeX template' })
+  end,
+})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -1277,6 +1330,50 @@ require('lazy').setup({
           vim.keymap.set('n', '<leader>lt', '<cmd>VimtexToggleMain<CR>', { buffer = true, desc = 'Toggle main file' })
         end,
       })
+    end,
+  },
+
+  { -- Toggle Terminal
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      require('toggleterm').setup {
+        -- Terminal window size
+        size = function(term)
+          if term.direction == 'horizontal' then
+            return 15
+          elseif term.direction == 'vertical' then
+            return vim.o.columns * 0.4
+          end
+        end,
+
+        -- Open terminal in current directory
+        start_in_insert = true,
+
+        -- Default terminal direction
+        direction = 'float', -- 'horizontal', 'vertical', or 'float'
+
+        -- Floating terminal settings
+        float_opts = {
+          -- Border style
+          border = 'curved', -- 'single', 'double', 'shadow', 'curved'
+          winblend = 0,
+        },
+
+        -- Shell to use
+        shell = vim.o.shell,
+      }
+
+      -- Setup keybindings
+      vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+      vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle floating terminal' })
+      vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Toggle horizontal terminal' })
+      vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical<CR>', { desc = 'Toggle vertical terminal' })
+
+      -- Exit on double tapping Esc
+      vim.keymap.set('t', '<Esc><Esc>', function()
+        require('toggleterm').toggle(1) -- or use the terminal ID you opened
+      end, { desc = 'Close ToggleTerm with Esc Esc' })
     end,
   },
 

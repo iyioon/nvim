@@ -17,6 +17,9 @@ Beyond the standard kickstart configuration, this configuration includes:
   - LaTeX distribution - MacTeX for Mac
   - PDF viewer - Skim for Mac. Update init.lua to use other viewer if modified.
   - LSP - texlab, latexindent
+- **Template Feature**: Add template to the current file with (<leader>nt)
+  - Currently only supports latex templates
+- **Toggle Terminal**: A plugin that allows you to open a terminal inside Neovim (using `<leader>tt`)
 
 ## Installation
 
