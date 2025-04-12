@@ -969,27 +969,7 @@ require('lazy').setup({
           end
           return 'make install_jsregexp'
         end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-          { -- Snippets for LaTeX
-            'iurimateus/luasnip-latex-snippets.nvim',
-            -- vimtex isn't required if using treesitter
-            requires = { 'L3MON4D3/LuaSnip', 'lervag/vimtex' },
-            config = function()
-              require('luasnip-latex-snippets').setup()
-              -- or setup({ use_treesitter = true })
-              require('luasnip').config.setup { enable_autosnippets = true }
-            end,
-          },
-        },
+        dependencies = {},
         opts = {},
       },
       'folke/lazydev.nvim',
@@ -1060,46 +1040,6 @@ require('lazy').setup({
     },
   },
 
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is.
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  --   'folke/tokyonight.nvim',
-  --   priority = 1000, -- Make sure to load this before all the other start plugins.
-  --   config = function()
-  --     ---@diagnostic disable-next-line: missing-fields
-  --     require('tokyonight').setup {
-  --       styles = {
-  --         comments = { italic = false }, -- Disable italics in comments
-  --       },
-  --     }
-  --     -- Load the colorscheme here.
-  --     -- Like many other themes, this one has different styles, and you could load
-  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  --     vim.cmd.colorscheme 'tokyonight-storm'
-  --   end,
-  -- },
-
-  { -- Cyberdream colorscheme with custom contrast and transparency
-    'scottmckendry/cyberdream.nvim', -- Replace this with the correct repo if different
-    priority = 1000, -- Ensure it loads before other UI plugins
-    lazy = false, -- Load this plugin at startup
-    config = function()
-      require('cyberdream').setup {
-        saturation = 0.5, -- Set to a value less than 1.0 for slightly less contrast
-        transparent = false, -- Enable a bit of transparency
-        colors = {
-          bg = '#24252F',
-        },
-      }
-      vim.cmd.colorscheme 'cyberdream'
-    end,
-  },
-
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -1118,19 +1058,22 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      -- Only setup mini.statusline if it's not disabled (it's disabled in our custom config)
+      if not vim.g.ministatusline_disable then
+        -- Simple and easy statusline.
+        --  You could remove this setup call if you don't like it,
+        --  and try some other statusline plugin
+        local statusline = require 'mini.statusline'
+        -- set use_icons to true if you have a Nerd Font
+        statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
+        -- You can configure sections in the statusline by overriding their
+        -- default behavior. For example, here we set the section for
+        -- cursor location to LINE:COLUMN
+        ---@diagnostic disable-next-line: duplicate-set-field
+        statusline.section_location = function()
+          return '%2l:%-2v'
+        end
       end
 
       -- ... and there is more!
@@ -1162,222 +1105,6 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  },
-
-  -- My Own Plugins
-  { -- Status bar
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      vim.g.ministatusline_disable = true -- Disable the original status line declared above
-
-      require('lualine').setup {
-        options = {
-          icons_enabled = true,
-          theme = 'auto',
-          component_separators = '|',
-          section_separators = '',
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff' },
-          lualine_c = { 'filename' },
-          lualine_x = {
-            {
-              'diagnostics',
-              sources = { 'nvim_diagnostic' },
-              symbols = { error = 'E:', warn = 'W:', info = 'I:', hint = 'H:' },
-            },
-            'filetype',
-          },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' },
-        },
-      }
-    end,
-  },
-
-  'github/copilot.vim',
-
-  { -- Allow you to pick a window to open a file in
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    version = '2.*',
-    config = function()
-      require('window-picker').setup {
-        selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        hint = 'floating-big-letter',
-        picker_config = {
-          handle_mouse_click = true,
-        },
-      }
-    end,
-  },
-
-  { -- NeoTree for file explorer
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Toggle Explorer' },
-      { '<leader>o', '<cmd>Neotree focus<cr>', desc = 'Focus Explorer' },
-    },
-    config = function()
-      require('neo-tree').setup {
-        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-        window = {
-          width = 30,
-          mappings = {
-            ['<space>'] = 'none', -- Disable space mapping to not conflict with leader key
-          },
-        },
-        filesystem = {
-          follow_current_file = {
-            enabled = true, -- Focus the file that's currently being edited
-          },
-          use_libuv_file_watcher = true, -- Use the system file watcher to auto refresh
-          filtered_items = {
-            visible = true, -- When true, hidden files will be shown
-            hide_dotfiles = false,
-            hide_gitignored = false,
-          },
-          window = {
-            mappings = {
-              ['o'] = 'open_with_window_picker',
-              ['<cr>'] = 'open_with_window_picker',
-              ['s'] = 'open_split',
-              ['v'] = 'open_vsplit',
-            },
-          },
-        },
-        event_handlers = {
-          -- {
-          --   -- This is the key event that closes Neo-tree after opening a file
-          --   event = 'file_opened',
-          --   handler = function()
-          --     require('neo-tree.command').execute { action = 'close' }
-          --   end,
-          -- },
-        },
-      }
-    end,
-  },
-
-  { -- Markdown Preview
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
-    init = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-    end,
-    ft = { 'markdown' },
-
-    -- Configure keymaps for Markdown Preview
-    config = function()
-      vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreviewToggle<CR>', { desc = 'Markdown Preview' })
-      vim.keymap.set('n', '<leader>mP', '<cmd>MarkdownPreviewStop<CR>', { desc = 'Stop Markdown Preview' })
-      vim.keymap.set('n', '<leader>mR', '<cmd>MarkdownPreview<CR>', { desc = 'Refresh Markdown Preview' })
-    end,
-  },
-
-  { -- Latex
-    'lervag/vimtex',
-    lazy = false, -- we don't want to lazy load VimTeX
-    init = function()
-      -- PDF view settings
-      vim.g.vimtex_view_method = 'skim'
-
-      -- Compile settings
-      vim.g.vimtex_compiler_method = 'latexmk'
-
-      -- Don't open QuickFix for warnings
-      vim.g.vimtex_quickfix_mode = 0
-
-      -- Disable custom warnings based on regexp
-      vim.g.vimtex_quickfix_ignore_filters = {
-        'Underfull',
-        'Overfull',
-        'specifier changed to',
-      }
-
-      -- Disable default mappings
-      vim.g.vimtex_mappings_enabled = 0
-
-      -- Disable insert mode mappings (might interfere with other plugins)
-      vim.g.vimtex_imaps_enabled = 0
-
-      -- Enable completion
-      vim.g.vimtex_complete_enabled = 1
-
-      -- Configure keymaps for VimTeX
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = { 'tex', 'latex' },
-        callback = function()
-          -- Compile document
-          vim.keymap.set('n', '<leader>ll', '<cmd>VimtexCompile<CR>', { buffer = true, desc = 'Compile LaTeX' })
-          -- View PDF
-          vim.keymap.set('n', '<leader>lv', '<cmd>VimtexView<CR>', { buffer = true, desc = 'View PDF' })
-          -- Forward search
-          vim.keymap.set('n', '<leader>ls', '<cmd>VimtexForwardSearch<CR>', { buffer = true, desc = 'Forward search' })
-          -- Clean auxiliary files
-          vim.keymap.set('n', '<leader>lc', '<cmd>VimtexClean<CR>', { buffer = true, desc = 'Clean auxiliary files' })
-          -- Show compile errors
-          vim.keymap.set('n', '<leader>le', '<cmd>VimtexErrors<CR>', { buffer = true, desc = 'Show errors' })
-          -- Toggle main/included files
-          vim.keymap.set('n', '<leader>lt', '<cmd>VimtexToggleMain<CR>', { buffer = true, desc = 'Toggle main file' })
-        end,
-      })
-    end,
-  },
-
-  { -- Toggle Terminal
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    config = function()
-      require('toggleterm').setup {
-        -- Terminal window size
-        size = function(term)
-          if term.direction == 'horizontal' then
-            return 15
-          elseif term.direction == 'vertical' then
-            return vim.o.columns * 0.4
-          end
-        end,
-
-        -- Open terminal in current directory
-        start_in_insert = true,
-
-        -- Default terminal direction
-        direction = 'float', -- 'horizontal', 'vertical', or 'float'
-
-        -- Floating terminal settings
-        float_opts = {
-          -- Border style
-          border = 'curved', -- 'single', 'double', 'shadow', 'curved'
-          winblend = 0,
-        },
-
-        -- Shell to use
-        shell = vim.o.shell,
-      }
-
-      -- Setup keybindings
-      vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-      vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle floating terminal' })
-      vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Toggle horizontal terminal' })
-      vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical<CR>', { desc = 'Toggle vertical terminal' })
-
-      -- Exit on double tapping Esc
-      vim.keymap.set('t', '<Esc><Esc>', function()
-        require('toggleterm').toggle(1) -- or use the terminal ID you opened
-      end, { desc = 'Close ToggleTerm with Esc Esc' })
-    end,
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the

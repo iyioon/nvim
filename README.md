@@ -2,24 +2,55 @@
 
 ## Introduction
 
-This is my personal Neovim setup extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
+This is my personal Neovim setup extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). I've organized the configuration into modular files for better maintainability while preserving the core functionality of kickstart.nvim.
 
-Beyond the standard kickstart configuration, this configuration includes:
+### Features
 
-- **File Explorer**: Using Neo-tree (`<leader>e`) for toggling the file explorer
-- **Enhanced Status Line**: Using lualine for a more informative status bar
-- **Auto-pairs**: Automatically closes brackets and quotes
-- **Github Copilot**: Integrated into Neovim for code suggestions
-- **Background Color Change During Insert Mode**: The background color changes to a darker shade when in insert mode
-- **Window Picker**: A plugin that allows you to easily select the window you want to open the file in (use together with Neo-tree)
-- **Markdown Preview**: A plugin that allows you to preview markdown files in a browser (using `:MarkdownPreview`)
-- **Latex Support**: Make sure to install:
-  - LaTeX distribution - MacTeX for Mac
-  - PDF viewer - Skim for Mac. Update init.lua to use other viewer if modified.
-  - LSP - texlab, latexindent
-- **Template Feature**: Add template to the current file with (<leader>nt)
-  - Currently only supports latex templates
-- **Toggle Terminal**: A plugin that allows you to open a terminal inside Neovim (using `<leader>tt`)
+Beyond the standard kickstart configuration, this setup includes:
+
+#### User Interface
+
+- **Enhanced Status Line**: Using lualine for a more informative and customizable status bar
+- **Custom Colorscheme**: Cyberdream theme with custom contrast and transparency settings
+- **Improved Command Line**: Floating command line UI with noice.nvim (`<leader>c` commands)
+- **Background Color Change**: Background darkens during insert mode for visual feedback
+
+#### Navigation & Productivity
+
+- **File Explorer**: Neo-tree for navigating files and directories
+  - Toggle with `<leader>e`, focus with `<leader>o`
+- **Window Picker**: Easily select which window to open a file in
+- **Toggle Terminal**: Floating terminal inside Neovim
+  - Access with `<leader>tt` (floating), `<leader>th` (horizontal), `<leader>tv` (vertical)
+
+#### Language Support
+
+- **LaTeX Suite**: Comprehensive LaTeX editing environment
+  - PDF preview with Skim integration
+  - Auto-compilation on save
+  - LaTeX-specific snippets
+  - Use `<leader>l` commands for LaTeX operations
+- **Markdown Tools**: Dedicated markdown editing experience
+  - Browser preview with `<leader>mp`
+  - Commands only available in markdown files
+
+#### Code Assistance
+
+- **GitHub Copilot**: AI-powered code suggestions as you type
+- **Auto-pairs**: Automatically closes brackets, quotes, and parentheses
+- **Template System**: Insert templates into new files
+  - LaTeX templates with `<leader>nt`
+  - Easily extensible for other file types
+
+### Modular Organization
+
+The configuration is organized into separate files by functionality:
+
+- **UI**: Visual elements and theme settings
+- **LaTeX**: All LaTeX-specific plugins and configurations
+- **Markdown**: Markdown preview and editing tools
+- **Command Line**: Command-line UI customization
+- **Utilities**: File explorer, terminal, and other tools
 
 ## Installation
 
