@@ -9,7 +9,6 @@ return {
   { import = "custom.plugins.ui" },        -- UI-related plugins (statusline, colorscheme, etc.)
   { import = "custom.plugins.latex" },     -- LaTeX-related plugins
   { import = "custom.plugins.markdown" },  -- Markdown-related plugins
-  { import = "custom.plugins.cmdline" },   -- Command-line UI customization
   { import = "custom.plugins.utils" },     -- Utility plugins (file explorer, terminal, etc.)
   
   -- Add any standalone plugins that don't fit in categories here

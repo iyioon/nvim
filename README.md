@@ -12,7 +12,6 @@ Beyond the standard kickstart configuration, this setup includes:
 
 - **Enhanced Status Line**: Using lualine for a more informative and customizable status bar
 - **Custom Colorscheme**: Cyberdream theme with custom contrast and transparency settings
-- **Improved Command Line**: Floating command line UI with noice.nvim (`<leader>c` commands)
 - **Background Color Change**: Background darkens during insert mode for visual feedback
 
 #### Navigation & Productivity
@@ -49,7 +48,6 @@ The configuration is organized into separate files by functionality:
 - **UI**: Visual elements and theme settings
 - **LaTeX**: All LaTeX-specific plugins and configurations
 - **Markdown**: Markdown preview and editing tools
-- **Command Line**: Command-line UI customization
 - **Utilities**: File explorer, terminal, and other tools
 
 ## Installation
