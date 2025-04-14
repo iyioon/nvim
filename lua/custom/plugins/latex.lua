@@ -29,6 +29,82 @@ return {
       -- Enable completion
       vim.g.vimtex_complete_enabled = 1
 
+      -- Inserting template files for latex
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'tex', 'latex' },
+        callback = function()
+          vim.keymap.set('n', '<leader>nt', function()
+            local template_dir = vim.fn.expand '~/.config/nvim/snippets/templates/latex'
+
+            require('telescope.builtin').find_files {
+              prompt_title = 'LaTeX Templates',
+              cwd = template_dir,
+              attach_mappings = function(_, map)
+                map('i', '<CR>', function(prompt_bufnr)
+                  -- Get selected file
+                  local selection = require('telescope.actions.state').get_selected_entry()
+                  require('telescope.actions').close(prompt_bufnr)
+
+                  if selection then
+                    -- Read file content
+                    local file = io.open(selection.path, 'r')
+                    if not file then
+                      return
+                    end
+
+                    local content = file:read '*all'
+                    file:close()
+
+                    -- Wait briefly after closing telescope
+                    vim.defer_fn(function()
+                      -- Ensure buffer is modifiable
+                      local bufnr = vim.api.nvim_get_current_buf()
+                      local was_modifiable = vim.bo[bufnr].modifiable
+                      vim.bo[bufnr].modifiable = true
+
+                      -- Split content and replace buffer
+                      local lines = {}
+                      for line in content:gmatch '[^\r\n]+' do
+                        table.insert(lines, line)
+                      end
+
+                      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+
+                      -- Restore modifiable
+                      vim.bo[bufnr].modifiable = was_modifiable
+                    end, 100) -- Small delay to ensure telescope is fully closed
+                  end
+                end)
+                return true
+              end,
+            }
+          end, { buffer = true, desc = 'Pick LaTeX template' })
+        end,
+      })
+
+      -- Compile LaTeX files on save
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'tex', 'latex' },
+        callback = function()
+          -- Create a buffer-local autocmd for BufWritePost
+          vim.api.nvim_create_autocmd('BufWritePost', {
+            buffer = 0, -- 0 means current buffer
+            callback = function()
+              -- Check if VimTeX compilation is already running
+              local vimtex_data = vim.b.vimtex
+              if vimtex_data and vimtex_data.compiler and not vimtex_data.compiler.is_running then
+                -- If not running, start compilation
+                vim.cmd 'VimtexCompile'
+              end
+            end,
+            desc = 'Compile LaTeX on save',
+          })
+
+          -- Let the user know this feature is enabled
+          -- vim.notify('Auto-compile on save enabled for LaTeX', vim.log.levels.INFO)
+        end,
+      })
+
       -- Configure keymaps for VimTeX
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'tex', 'latex' },
