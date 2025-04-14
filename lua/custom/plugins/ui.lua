@@ -16,7 +16,7 @@ return {
 
       -- Custom light purple Visual highlight
       vim.api.nvim_set_hl(0, 'Visual', {
-        bg = '#8A2BE2', -- Light purple color
+        bg = '#6C4E9B', -- Light purple color
         fg = 'NONE', -- Keep text color the same
       })
     end,

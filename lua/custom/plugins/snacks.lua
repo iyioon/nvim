@@ -8,6 +8,7 @@ return {
     opts = {
       -- Enable only the snacks plugins you want to use
       indent = { enabled = true },
+
       scroll = {
         enabled = true,
         animate = {
@@ -15,8 +16,10 @@ return {
           easing = 'outQuad',
         },
       },
+
       dim = {
         -- Default configuration for dim (initially disabled)
+        -- See below for the toggle mechanism during insert mode
         enabled = false,
         animate = {
           duration = {
@@ -25,23 +28,32 @@ return {
           },
         },
       },
+
       dashboard = {
         enabled = true,
         sections = {
-          {
-            section = 'terminal',
-            cmd = 'chafa ~/.config/nvim/dashboard.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1',
-            height = 17,
-            padding = 1,
-          },
-          {
-            pane = 2,
-            { section = 'keys', gap = 1, padding = 1 },
-            { section = 'startup' },
-          },
+          { section = 'header' },
+          { section = 'keys', gap = 1, padding = 1 },
+          { section = 'startup' },
+        },
+        -- Check https://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=LAZYVIM
+        -- for generating ASCII art
+        preset = {
+          header = [[
+           ▄█  ▄██   ▄    ▄█   ▄██████▄   ▄██████▄  
+███  ███   ██▄ ███  ███    ███ ███    ███ ███▀▀▀██▄ 
+███▌ ███▄▄▄███ ███▌ ███    ███ ███    ███ ███   ███ 
+███▌ ▀▀▀▀▀▀███ ███▌ ███    ███ ███    ███ ███   ███ 
+███▌ ▄██   ███ ███▌ ███    ███ ███    ███ ███   ███ 
+███  ███   ███ ███  ███    ███ ███    ███ ███   ███ 
+███  ███   ███ ███  ███    ███ ███    ███ ███   ███ 
+█▀    ▀█████▀  █▀    ▀██████▀   ▀██████▀   ▀█   █▀  
+
+          ]],
         },
       },
     },
+
     config = function(_, opts)
       -- Load the plugin with options
       require('snacks').setup(opts)
