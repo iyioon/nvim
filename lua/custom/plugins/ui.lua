@@ -13,6 +13,12 @@ return {
         },
       }
       vim.cmd.colorscheme 'cyberdream'
+
+      -- Custom light purple Visual highlight
+      vim.api.nvim_set_hl(0, 'Visual', { 
+        bg = '#8A2BE2', -- Light purple color
+        fg = 'NONE'     -- Keep text color the same
+      })
     end,
   },
   
