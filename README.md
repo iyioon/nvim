@@ -41,6 +41,15 @@ Beyond the standard kickstart configuration, this setup includes:
   - LaTeX templates with `<leader>nt`
   - Easily extensible for other file types
 
+### Snacks
+
+- A collection of small QoL plugins including
+  - **Indent**: Indent guides for better readability
+  - **Scroll**: Smooth scrolling
+  - **Dashboard**: A startup dashboard with a image (make sure `chafa` is installed)
+  - **Twilight**: Dim inactive code to focus on the current function
+  - **Dim**: Only light up the current section during insert mode
+
 ### Modular Organization
 
 The configuration is organized into separate files by functionality:

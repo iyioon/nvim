@@ -7,7 +7,7 @@ return {
     config = function()
       require('cyberdream').setup {
         saturation = 0.5, -- Set to a value less than 1.0 for slightly less contrast
-        transparent = false, -- Enable a bit of transparency
+        transparent = false,
         colors = {
           bg = '#24252F',
         },
@@ -15,13 +15,13 @@ return {
       vim.cmd.colorscheme 'cyberdream'
 
       -- Custom light purple Visual highlight
-      vim.api.nvim_set_hl(0, 'Visual', { 
+      vim.api.nvim_set_hl(0, 'Visual', {
         bg = '#8A2BE2', -- Light purple color
-        fg = 'NONE'     -- Keep text color the same
+        fg = 'NONE', -- Keep text color the same
       })
     end,
   },
-  
+
   { -- Status bar
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -53,7 +53,7 @@ return {
       }
     end,
   },
-  
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }
