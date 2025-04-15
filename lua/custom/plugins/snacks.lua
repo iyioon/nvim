@@ -18,15 +18,23 @@ return {
       },
 
       dim = {
-        -- Default configuration for dim (initially disabled)
         -- See below for the toggle mechanism during insert mode
         enabled = false,
+
         animate = {
           duration = {
             step = 2,
             total = 300,
           },
         },
+        -- Only dim the current active buffer
+        filter = function(buf)
+          -- Check if this buffer is the current active buffer
+          local is_current_buffer = buf == vim.api.nvim_get_current_buf()
+
+          -- Keep other standard checks but only allow dimming for current buffer
+          return is_current_buffer and vim.g.snacks_dim ~= false and vim.b[buf].snacks_dim ~= false and vim.bo[buf].buftype == ''
+        end,
       },
 
       dashboard = {
