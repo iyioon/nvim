@@ -6,7 +6,7 @@ return {
     lazy = false, -- Load this plugin at startup
     config = function()
       require('cyberdream').setup {
-        saturation = 0.5, -- Set to a value less than 1.0 for slightly less contrast
+        saturation = 0.8, -- Set to a value less than 1.0 for slightly less contrast
         transparent = true,
         colors = {
           bg = '#24252F',
@@ -16,8 +16,9 @@ return {
 
       -- Custom light purple Visual highlight
       vim.api.nvim_set_hl(0, 'Visual', {
-        bg = '#6C4E9B', -- Light purple color
+        bg = '#aa7ed0',
         fg = 'NONE', -- Keep text color the same
+        blend = 20, -- Add some transparency
       })
     end,
   },
