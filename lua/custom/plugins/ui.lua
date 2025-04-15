@@ -7,7 +7,7 @@ return {
     config = function()
       require('cyberdream').setup {
         saturation = 0.5, -- Set to a value less than 1.0 for slightly less contrast
-        transparent = false,
+        transparent = true,
         colors = {
           bg = '#24252F',
         },
