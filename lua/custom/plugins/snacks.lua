@@ -37,6 +37,13 @@ return {
         end,
       },
 
+      zen = {
+        enabled = true,
+        toggles = {
+          dim = false,
+        },
+      },
+
       dashboard = {
         enabled = true,
         sections = {
@@ -80,6 +87,12 @@ return {
         end,
         desc = 'Disable dim when leaving insert mode',
       })
+
+      -- keybind to toggle zen mode
+      local zen_active = false
+      vim.keymap.set('n', '<leader>tz', function()
+        require('snacks').zen.zen()
+      end, { desc = '[T]oggle [Z]en mode' })
     end,
   },
 }
