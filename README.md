@@ -49,6 +49,7 @@ Beyond the standard kickstart configuration, this setup includes:
   - **Dashboard**: A startup dashboard with a image (make sure `chafa` is installed)
   - **Twilight**: Dim inactive code to focus on the current function
   - **Dim**: Only light up the current section during insert mode
+  - **Zen**: Distraction-free writing mode
 
 ### Modular Organization
 
