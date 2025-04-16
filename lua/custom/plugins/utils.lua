@@ -111,6 +111,9 @@ return {
       vim.keymap.set('t', '<Esc><Esc>', function()
         require('toggleterm').toggle(1) -- or use the terminal ID you opened
       end, { desc = 'Close ToggleTerm with Esc Esc' })
+
+      -- When single Esc is pressed, go to normal mode to allow navigation inside terminal
+      vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Go to normal mode' })
     end,
   },
 
@@ -121,7 +124,7 @@ return {
   {
     'junegunn/vim-easy-align',
     keys = {
-      { "ga", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "Align Text" },
+      { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' }, desc = 'Align Text' },
     },
     config = function()
       vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
@@ -129,4 +132,3 @@ return {
     end,
   },
 }
-
