@@ -21,6 +21,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **Window Picker**: Easily select which window to open a file in
 - **Toggle Terminal**: Floating terminal inside Neovim
   - Access with `<leader>tt` (floating), `<leader>th` (horizontal), `<leader>tv` (vertical)
+- **VIm Easy Align**: Align text (`ga`) to align with a character on selection
 
 #### Language Support
 
@@ -57,7 +58,7 @@ The configuration is organized into separate files by functionality:
 - **UI**: Visual elements and theme settings
 - **LaTeX**: All LaTeX-specific plugins and configurations
 - **Markdown**: Markdown preview and editing tools
-- **Utilities**: File explorer, terminal, and other tools
+- **Utilities**: File explorer, terminal, vim easy align
 - **Snacks**: Small plugins for quality of life improvements
 - **Zen**: Distraction-free writing mode
 
