@@ -37,6 +37,24 @@ return {
         end,
       },
 
+      lazygit = {
+        enabled = true,
+        -- your lazygit configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        -- https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md
+        -- configure = true,  -- Auto-configure with current colorscheme
+        config = {
+          os = { editPreset = 'nvim-remote' }, -- Allow editing files in your current Neovim instance
+          gui = {
+            nerdFontsVersion = '3', -- Use Nerd Font icons (set to "" to disable icons)
+          },
+        },
+        win = {
+          style = 'lazygit', -- Use the predefined lazygit window style
+        },
+      },
+
       dashboard = {
         enabled = true,
         sections = {
@@ -80,6 +98,16 @@ return {
         end,
         desc = 'Disable dim when leaving insert mode',
       })
+      -- LazyGit keybindings
+      vim.keymap.set('n', '<leader>gg', function()
+        require('snacks').lazygit.open()
+      end, { desc = 'Open LazyGit' })
+      vim.keymap.set('n', '<leader>gl', function()
+        require('snacks').lazygit.log()
+      end, { desc = 'Open LazyGit log view' })
+      vim.keymap.set('n', '<leader>gf', function()
+        require('snacks').lazygit.log_file()
+      end, { desc = 'Open LazyGit file history' })
     end,
   },
 }

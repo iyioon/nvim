@@ -276,12 +276,22 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        add = { text = '┃' },
+        change = { text = '┃' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+        untracked = { text = '┆' },
       },
+      signs_staged = {
+        add = { text = '┃' },
+        change = { text = '┃' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked = { text = '┆' },
+      },
+      signs_staged_enable = true,
     },
   },
 
@@ -352,6 +362,7 @@ require('lazy').setup({
         { '<leader>l', group = '[L]aTeX' },
         { '<leader>n', group = '[N]ew' },
         { '<leader>b', group = '[B]uffer' },
+        { '<leader>g', group = '[G]it' },
       },
     },
   },

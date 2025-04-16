@@ -52,16 +52,12 @@ Beyond the standard kickstart configuration, this setup includes:
   - **Twilight**: Dim inactive code to focus on the current function
   - **Dim**: Only light up the current section during insert mode
 
-### Modular Organization
+### LazyGit
 
-The configuration is organized into separate files by functionality:
-
-- **UI**: Visual elements and theme settings
-- **LaTeX**: All LaTeX-specific plugins and configurations
-- **Markdown**: Markdown preview and editing tools
-- **Utilities**: File explorer, terminal, vim easy align
-- **Snacks**: Small plugins for quality of life improvements
-- **Zen**: Distraction-free writing mode
+- **LazyGit Integration**: A Neovim UI for Git
+  - Access with `<leader>gg` to open LazyGit in a floating window
+  - Press `q` to close the window
+  - IMPORTANT: Make sure you have `lazygit` installed on your system (`brew install lazygit` on MacOS)
 
 ## Installation
 
