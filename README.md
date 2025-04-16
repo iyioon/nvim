@@ -41,6 +41,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **Template System**: Insert templates into new files
   - LaTeX templates with `<leader>nt`
   - Easily extensible for other file types
+- **Treesitter-conetext**: Show code context at the top of the buffer (`<leader>tc` to toggle)
 
 ### Snacks
 

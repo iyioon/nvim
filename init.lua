@@ -951,6 +951,38 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
+  { -- Treesitter Context - Show code context at the top of the buffer
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'BufReadPre',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      enable = true, -- Enable this plugin
+      max_lines = 0, -- How many lines the context will take at most value <= 0 means no limit
+      min_window_height = 0, -- Minimum editor window height to enable context
+      line_numbers = true, -- Show line numbers in context
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded
+      mode = 'cursor', -- Line used to calculate context: 'cursor' or 'topline'
+      zindex = 20, -- The Z-index of the context window
+      separator = nil, -- Separator between context and content
+    },
+    config = function(_, opts)
+      require('treesitter-context').setup(opts)
+      -- Add keybinding to toggle context on/off
+      vim.keymap.set('n', '<leader>tc', function()
+        require('treesitter-context').toggle()
+      end, { desc = '[T]oggle [C]ontext' })
+
+      -- Style changes
+      vim.cmd [[
+        hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
+        hi TreesitterContext guibg=NONE
+      ]]
+    end,
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
