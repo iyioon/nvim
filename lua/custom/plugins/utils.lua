@@ -16,6 +16,21 @@ return {
     end,
   },
 
+  { -- Mini surround (Custom key gs)
+    'echasnovski/mini.surround',
+    opts = {
+      mappings = {
+        add = 'gsa', -- Add surrounding in Normal and Visual modes
+        delete = 'gsd', -- Delete surrounding
+        find = 'gsf', -- Find surrounding (to the right)
+        find_left = 'gsF', -- Find surrounding (to the left)
+        highlight = 'gsh', -- Highlight surrounding
+        replace = 'gsr', -- Replace surrounding
+        update_n_lines = 'gsn', -- Update `n_lines`
+      },
+    },
+  },
+
   { -- NeoTree for file explorer
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -137,7 +152,13 @@ return {
     'folke/flash.nvim',
     event = 'VeryLazy',
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      modes = {
+        search = {
+          enabled = true,
+        },
+      },
+    },
     keys = {
       {
         's',
