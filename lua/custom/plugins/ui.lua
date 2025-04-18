@@ -20,6 +20,14 @@ return {
         fg = 'NONE', -- Keep text color the same
         blend = 20, -- Add some transparency
       })
+
+      -- Custom CursorLine, curosr and TelescopeSelection highlight
+      -- vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#2e2a35' }) -- Enable for a custom CursorLine highlight
+      vim.o.cursorline = false -- Disable CursorLine highlight
+      vim.o.guicursor = 'n-v-c:block-Cursor,i:ver25-CursorInsert'
+      vim.api.nvim_set_hl(0, 'Cursor', { bg = '#d100bf' })
+      vim.api.nvim_set_hl(0, 'CursorInsert', { bg = '#d100bf' })
+      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = '#aa7ed0' })
     end,
   },
 
