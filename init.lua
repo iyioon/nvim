@@ -361,6 +361,8 @@ require('lazy').setup({
         { '<leader>n', group = '[N]ew' },
         { '<leader>b', group = '[B]uffer' },
         { '<leader>g', group = '[G]it' },
+        { 'gs', group = '[S]urround' },
+        { 'gr', group = 'Lsp' },
       },
     },
   },
@@ -459,7 +461,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>e', function()
-        require('telescope').extensions.file_browser.file_browser { 
+        require('telescope').extensions.file_browser.file_browser {
           path = vim.fn.expand '%:p:h',
           respect_gitignore = false,
           hidden = true,
