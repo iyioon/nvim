@@ -207,6 +207,15 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- j and k to move up and down single lines
+-- but with count, it behaves like normal
+vim.keymap.set({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+-- movement keys to move to the start and end of the line
+vim.keymap.set({ 'n', 'v' }, '0', 'g0', { desc = 'Visual line start' })
+vim.keymap.set({ 'n', 'v' }, '_', 'g^', { desc = 'Visual line first non-blank' })
+vim.keymap.set({ 'n', 'v' }, '$', 'g$', { desc = 'Visual line end' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
