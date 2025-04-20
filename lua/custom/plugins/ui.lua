@@ -28,7 +28,7 @@ return {
       vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#707889' })
       vim.api.nvim_set_hl(0, 'LineNr', { fg = '#ff5ef1' })
 
-      vim.api.nvim_set_hl(0, 'MatchParen', { bg = '#ff5ef1', fg = '#ffffff', bold = true }) -- Highlight matching parentheses
+      vim.api.nvim_set_hl(0, 'MatchParen', { bg = '#7f3aa0', fg = '#ffffff', bold = true }) -- Highlight matching parentheses
 
       -- Matching file
 

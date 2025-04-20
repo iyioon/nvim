@@ -22,12 +22,4 @@ return {
       })
     end,
   },
-  
-
-  -- You can add more Markdown-specific plugins and configurations here in the future
-  -- Examples might include:
-  -- - Obsidian.nvim for Obsidian vault integration
-  -- - Markdown Table formatter
-  -- - Wiki plugins
-  -- - Custom formatters or linters
 }
