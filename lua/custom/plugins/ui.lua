@@ -16,7 +16,7 @@ return {
 
       -- Custom light purple Visual highlight
       vim.api.nvim_set_hl(0, 'Visual', {
-        bg = '#335d98',
+        bg = '#7f3aa0',
         fg = 'NONE', -- Keep text color the same
         blend = 20, -- Add some transparency
       })
@@ -26,18 +26,18 @@ return {
       -- vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#2e2a35' }) -- Enable for a custom CursorLine highlight
       vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#707889' })
       vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#707889' })
-      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#a018ff' })
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#ff5ef1' })
 
-      vim.api.nvim_set_hl(0, 'MatchParen', { bg = '#aa7ed0', fg = '#ffffff', bold = true }) -- Highlight matching parentheses
+      vim.api.nvim_set_hl(0, 'MatchParen', { bg = '#ff5ef1', fg = '#ffffff', bold = true }) -- Highlight matching parentheses
 
       -- Matching file
 
       -- Custom curosr and TelescopeSelection highlight
       vim.o.cursorline = false -- Disable CursorLine highlight
       vim.o.guicursor = 'n-v-c:block-Cursor,i:ver25-CursorInsert'
-      vim.api.nvim_set_hl(0, 'Cursor', { bg = '#a018ff' })
-      vim.api.nvim_set_hl(0, 'CursorInsert', { bg = '#a018ff' })
-      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = '#335d98' })
+      vim.api.nvim_set_hl(0, 'Cursor', { bg = '#ff5ef1' })
+      vim.api.nvim_set_hl(0, 'CursorInsert', { bg = '#ff5ef1' })
+      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = '#7f3aa0' })
     end,
   },
 

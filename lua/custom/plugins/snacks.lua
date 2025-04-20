@@ -75,15 +75,11 @@ return {
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
           },
           header = [[
-           ▄█  ▄██   ▄    ▄█   ▄██████▄   ▄██████▄  
-███  ███   ██▄ ███  ███    ███ ███    ███ ███▀▀▀██▄ 
-███▌ ███▄▄▄███ ███▌ ███    ███ ███    ███ ███   ███ 
-███▌ ▀▀▀▀▀▀███ ███▌ ███    ███ ███    ███ ███   ███ 
-███▌ ▄██   ███ ███▌ ███    ███ ███    ███ ███   ███ 
-███  ███   ███ ███  ███    ███ ███    ███ ███   ███ 
-███  ███   ███ ███  ███    ███ ███    ███ ███   ███ 
-█▀    ▀█████▀  █▀    ▀██████▀   ▀██████▀   ▀█   █▀  
-
+░   ░░░  ░░        ░░░      ░░░  ░░░░  ░░        ░░  ░░░░  ░
+▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒   ▒▒   ▒
+▓  ▓  ▓  ▓▓      ▓▓▓▓  ▓▓▓▓  ▓▓▓  ▓▓  ▓▓▓▓▓▓  ▓▓▓▓▓        ▓
+█  ██    ██  ████████  ████  ████    ███████  █████  █  █  █
+█  ███   ██        ███      ██████  █████        ██  ████  █
           ]],
         },
       },
@@ -92,6 +88,9 @@ return {
     config = function(_, opts)
       -- Load the plugin with options
       require('snacks').setup(opts)
+
+      -- Change header color
+      vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#7b8496' })
 
       -- Set up autocommands to toggle dim based on insert mode
       vim.api.nvim_create_autocmd('InsertEnter', {
