@@ -181,6 +181,7 @@ Below is a list of recommended LSP servers for various languages (use `:Mason` t
 | stylua                       | Lua code formatter                                                      |
 | texlab                       | LaTeX language server                                                   |
 | latexindent                  | LaTeX code formatter                                                    |
+| 1tex-ls                      | Provide grammer and spell checking capabilities                         |
 
 ### Getting Started
 
