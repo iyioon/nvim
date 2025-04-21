@@ -15,9 +15,30 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'markdown',
         callback = function()
-          vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreviewToggle<CR>', { buffer = true, desc = 'Markdown Preview' })
-          vim.keymap.set('n', '<leader>mP', '<cmd>MarkdownPreviewStop<CR>', { buffer = true, desc = 'Stop Markdown Preview' })
-          vim.keymap.set('n', '<leader>mR', '<cmd>MarkdownPreview<CR>', { buffer = true, desc = 'Refresh Markdown Preview' })
+          vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreviewToggle<CR>', { buffer = true, desc = 'Toggle [M]arkdown [P]review' })
+        end,
+      })
+    end,
+  },
+
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+
+    -- Configure keymaps for Render Markdown - only applied to markdown files
+    config = function()
+      -- Enable completions for Render Markdown
+      require('render-markdown').setup {
+        completions = { blink = { enabled = true } },
+      }
+      -- Create buffer-local keymaps that only apply to markdown files
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'markdown',
+        callback = function()
+          vim.keymap.set('n', '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', { buffer = true, desc = 'Toggle [M]arkdown [R]ender' })
         end,
       })
     end,

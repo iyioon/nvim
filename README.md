@@ -33,7 +33,7 @@ Beyond the standard kickstart configuration, this setup includes:
   - Use `<leader>l` commands for LaTeX operations
 - **Markdown Tools**: Dedicated markdown editing experience
   - Browser preview with `<leader>mp`
-  - Commands only available in markdown files
+  - Markdown render with `<leader>mr`
 
 #### Code Assistance
 

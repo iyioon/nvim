@@ -47,7 +47,7 @@ return {
       -- Changing filename color based on modified status
       local custom_fname = require('lualine.components.filename'):extend()
       local highlight = require 'lualine.highlight'
-      local default_status_colors = { saved = '#228B22', modified = '#C70039' }
+      local default_status_colors = { saved = '#5eff6c', modified = '#ff6e5e' }
 
       function custom_fname:init(options)
         custom_fname.super.init(self, options)
