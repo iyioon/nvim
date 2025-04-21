@@ -156,6 +156,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Make tabs 2 spaces
+vim.opt.expandtab = true -- Turn tab into spaces
+vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
+vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
+vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
+
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
@@ -851,14 +857,28 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
         opts = {},
+
+        config = function()
+          -- Setup LuaSnip
+          require('luasnip').config.set_config {
+            history = true,
+            updateevents = 'TextChanged,TextChangedI',
+            enable_autosnippets = true,
+          }
+
+          -- Custom Snippets, load all snippets from the `snippets` directory
+          require('luasnip.loaders.from_lua').lazy_load {
+            paths = { vim.fn.stdpath 'config' .. '/snippets' },
+          }
+        end,
       },
       'folke/lazydev.nvim',
     },
@@ -902,7 +922,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       sources = {

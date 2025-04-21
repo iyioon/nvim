@@ -43,4 +43,9 @@ return {
       })
     end,
   },
+
+  -- Auto Increment bullets
+  {
+    'bullets-vim/bullets.vim',
+  },
 }

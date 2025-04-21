@@ -129,9 +129,9 @@ return {
   { -- Snippets for LaTeX
     'iurimateus/luasnip-latex-snippets.nvim',
     ft = { 'tex', 'latex' },
-    dependencies = { 
+    dependencies = {
       'L3MON4D3/LuaSnip',
-      'lervag/vimtex' 
+      'lervag/vimtex',
     },
     config = function()
       require('luasnip-latex-snippets').setup()
@@ -139,3 +139,4 @@ return {
     end,
   },
 }
+
