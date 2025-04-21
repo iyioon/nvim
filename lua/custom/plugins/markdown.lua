@@ -41,6 +41,14 @@ return {
           vim.keymap.set('n', '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', { buffer = true, desc = 'Toggle [M]arkdown [R]ender' })
         end,
       })
+
+      -- Enable linebreaks for markdown files
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'markdown',
+        callback = function()
+          vim.opt_local.linebreak = true
+        end,
+      })
     end,
   },
 
