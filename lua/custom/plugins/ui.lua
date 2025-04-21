@@ -8,9 +8,6 @@ return {
       require('cyberdream').setup {
         saturation = 0.8, -- Set to a value less than 1.0 for slightly less contrast
         transparent = true,
-        colors = {
-          bg = '#24252F',
-        },
       }
       vim.cmd.colorscheme 'cyberdream'
 
@@ -51,7 +48,7 @@ return {
         options = {
           icons_enabled = true,
           theme = 'auto',
-          component_separators = '|',
+          component_separators = '',
           section_separators = '',
         },
         sections = {
@@ -64,10 +61,24 @@ return {
               sources = { 'nvim_diagnostic' },
               symbols = { error = 'E:', warn = 'W:', info = 'I:', hint = 'H:' },
             },
-            'filetype',
           },
           lualine_y = { 'progress' },
-          lualine_z = { 'location' },
+          lualine_z = {
+            {
+              'lsp_status',
+              icon = '', -- f013
+              symbols = {
+                -- Standard unicode symbols to cycle through for LSP progress:
+                spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+                -- Standard unicode symbol for when LSP is done:
+                done = '',
+                -- Delimiter inserted between LSP names:
+                separator = ' ',
+              },
+              -- List of LSP names to ignore (e.g., `null-ls`):
+              ignore_lsp = { 'GitHub Copilot' },
+            },
+          },
         },
       }
     end,
