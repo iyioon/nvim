@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is my personal Neovim setup extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). I've organized the configuration into modular files for better maintainability while preserving the core functionality of kickstart.nvim.
+This is my personal Neovim setup extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 
 ### Features
 
@@ -21,7 +21,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **Window Picker**: Easily select which window to open a file in
 - **Toggle Terminal**: Floating terminal inside Neovim
   - Access with `<leader>tt` (floating), `<leader>th` (horizontal), `<leader>tv` (vertical)
-- **VIm Easy Align**: Align text (`ga`) to align with a character on selection
+- **VIM Easy Align**: Align text (`ga`) to align with a character on selection
 - **Flash**: Much better navigation. Refer to [folke/flash.nvim](https://github.com/folke/flash.nvim?tab=readme-ov-file)
 
 #### Language Support
@@ -46,12 +46,11 @@ Beyond the standard kickstart configuration, this setup includes:
 
 ### Snacks
 
-- A collection of small QoL plugins including
+- A collection of small QOL plugins:
   - **Indent**: Indent guides for better readability
   - **Scroll**: Smooth scrolling
   - **Dashboard**: A startup dashboard with a image (make sure `chafa` is installed)
-  - **Twilight**: Dim inactive code to focus on the current function
-  - **Dim**: Only light up the current section during insert mode
+  - **Dim**: Dim other lines during insert mode for better focus
 
 ### LazyGit
 

@@ -11,6 +11,7 @@ return {
   { import = 'custom.plugins.markdown' }, -- Markdown-related plugins
   { import = 'custom.plugins.utils' }, -- Utility plugins (file explorer, terminal, etc.)
   { import = 'custom.plugins.snacks' }, -- Quality of life plugins
-  {import = 'custom.plugins.zen'}, -- Distraction-free coding
-  -- Add any standalone plugins that don't fit in categories here
+  { import = 'custom.plugins.zen' }, -- Distraction-free coding
+  { import = 'custom.plugins.file-explorer' },
+  { import = 'custom.plugins.terminal' },
 }
