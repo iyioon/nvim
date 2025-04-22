@@ -480,8 +480,9 @@ require('lazy').setup({
           path = vim.fn.expand '%:p:h',
           respect_gitignore = false,
           hidden = true,
+          select_buffer = true, -- highlight current file
         }
-      end, { desc = 'File [E]xplorer' })
+      end)
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
