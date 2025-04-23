@@ -44,7 +44,7 @@ return {
           use_libuv_file_watcher = true, -- Use the system file watcher to auto refresh
           filtered_items = {
             visible = true, -- When true, hidden files will be shown
-            hide_dotfiles = false,
+            hide_dotfiles = false, -- Hide dotfiles
             hide_gitignored = false,
           },
           window = {

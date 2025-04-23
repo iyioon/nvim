@@ -446,14 +446,29 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
           file_browser = {
-            -- theme = "ivy",
-            -- disables netrw and use telescope-file-browser in its place
             hijack_netrw = true,
+            attach_mappings = function(prompt_bufnr, map)
+              map('i', '<C-d>', function()
+                local st = require 'telescope.actions.state'
+                local entry = st.get_selected_entry()
+                if not entry then
+                  return
+                end
+                vim.fn.system { 'trash', entry.path }
+                local picker = st.get_current_picker(prompt_bufnr)
+                picker:refresh(picker.finder, {
+                  reset_prompt = true,
+                  multi = picker._multi,
+                })
+              end, { desc = 'Move file to macOS Trash' })
+              return true -- keep all the other default mappings
+            end,
           },
         },
       }
@@ -479,10 +494,10 @@ require('lazy').setup({
         require('telescope').extensions.file_browser.file_browser {
           path = vim.fn.expand '%:p:h',
           respect_gitignore = false,
-          hidden = true,
+          hidden = false,
           select_buffer = true, -- highlight current file
         }
-      end)
+      end, { desc = 'File browser' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
