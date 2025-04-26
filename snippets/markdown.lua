@@ -23,7 +23,7 @@ ls.add_snippets('markdown', {
   ps({ trig = 'hoff', name = 'Headings Off', dscr = 'Add number headings off setting to YAML' }, 'number headings: off$0'),
 
   -- Math
-  ps({ trig = 'mk', snippetType = 'autosnippet', wordTrig = true }, '$$${1}$$$0'),
+  ps({ trig = 'mk', snippetType = 'autosnippet', wordTrig = true }, '$${1}$$0'),
   ps(
     { trig = 'dm', snippetType = 'autosnippet', wordTrig = true },
     [[$$
