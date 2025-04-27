@@ -51,6 +51,7 @@ Beyond the standard kickstart configuration, this setup includes:
   - **Scroll**: Smooth scrolling
   - **Dashboard**: A startup dashboard with a image (make sure `chafa` is installed)
   - **Dim**: Dim other lines during insert mode for better focus
+  - **Image**: Display images in Neovim (requires supported terminals, see [image.nvim](https://github.com/folke/snacks.nvim/blob/main/docs/image.md))
 
 ### LazyGit
 

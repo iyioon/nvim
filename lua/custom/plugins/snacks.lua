@@ -6,6 +6,11 @@ return {
     priority = 1000, -- Load early
     lazy = false, -- Don't lazy load
     opts = {
+      -- Image viewer
+      image = {
+        enabled = true,
+      },
+
       -- Enable only the snacks plugins you want to use
       indent = { enabled = true },
 
