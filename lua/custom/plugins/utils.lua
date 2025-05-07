@@ -1,7 +1,6 @@
 -- Utility plugins for better coding experience
 return {
-  { -- Allow you to pick a window to open a file in
-    -- Use this with NeoTree
+  {
     's1n7ax/nvim-window-picker',
     name = 'window-picker',
     event = 'VeryLazy',
@@ -10,10 +9,21 @@ return {
       require('window-picker').setup {
         selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
         hint = 'floating-big-letter',
-        picker_config = {
-          handle_mouse_click = true,
-        },
+        picker_config = { handle_mouse_click = true },
       }
+
+      -- correct keybinding
+      vim.keymap.set('n', '<C-w>', function()
+        local win = require('window-picker').pick_window()
+        if win then
+          vim.api.nvim_set_current_win(win)
+        end
+      end, {
+        desc = 'Pick a window',
+        noremap = true,
+        silent = true,
+        nowait = true,
+      })
     end,
   },
 
