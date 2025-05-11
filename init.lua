@@ -797,6 +797,7 @@ require('lazy').setup({
         'texlab',
         'latexindent',
         'ltex-ls',
+        'typescript-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
