@@ -30,7 +30,10 @@ return {
       -- Matching file
 
       -- Custom curosr and TelescopeSelection highlight
-      vim.o.cursorline = false -- Disable CursorLine highlight
+      vim.o.cursorline = true
+      vim.api.nvim_set_hl(0, 'CursorLine', {
+        bg = '#31293F',
+      })
       vim.o.guicursor = 'n-v-c:block-Cursor,i:ver25-CursorInsert'
       vim.api.nvim_set_hl(0, 'Cursor', { bg = '#ff5ef1' })
       vim.api.nvim_set_hl(0, 'CursorInsert', { bg = '#ff5ef1' })
