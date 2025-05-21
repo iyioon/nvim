@@ -54,7 +54,34 @@ return {
   },
 
   -- GitHub Copilot
-  'github/copilot.vim',
+  {
+    'zbirenbaum/copilot.lua',
+    event = 'InsertEnter', -- load when you enter Insert mode
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('copilot').setup {
+        panel = {
+          auto_refresh = false,
+          keymap = {
+            accept = '<CR>', -- enter to accept in panel
+            jump_prev = '[[', -- go up
+            jump_next = ']]', -- go down
+            refresh = 'gr', -- refresh suggestions
+            open = '<M-CR>', -- Alt-Enter to open panel
+          },
+        },
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = '<M-l>', -- Alt-l to accept
+            prev = '<M-[>', -- Alt-[ to go to previous suggestion
+            next = '<M-]>', -- Alt-] to go to next suggestion
+            dismiss = '<C-]>', -- Ctrl-] to dismiss
+          },
+        },
+      }
+    end,
+  },
 
   -- Vim Easy Align
   {
