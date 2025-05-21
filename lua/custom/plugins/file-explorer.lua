@@ -9,7 +9,7 @@ return {
     },
     cmd = 'Neotree',
     keys = {
-      { '<leader>E', '<cmd>Neotree toggle<cr>', desc = 'Neotree toggle' },
+      { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Neotree toggle' },
       { '<leader>o', '<cmd>Neotree focus<cr>', desc = 'Focus Neotree' },
     },
     config = function()

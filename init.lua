@@ -157,10 +157,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Make tabs 2 spaces
--- vim.opt.expandtab = true -- Turn tab into spaces
--- vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
--- vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
--- vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
+vim.opt.expandtab = true -- Turn tab into spaces
+vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
+vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
+vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -490,7 +490,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>e', function()
+      vim.keymap.set('n', '<leader>E', function()
         require('telescope').extensions.file_browser.file_browser {
           path = vim.fn.expand '%:p:h',
           respect_gitignore = false,
@@ -853,6 +853,7 @@ require('lazy').setup({
         markdown = { 'prettier' },
         tex = { 'latexindent' },
         latex = { 'latexindent' },
+        html = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

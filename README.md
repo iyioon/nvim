@@ -16,8 +16,8 @@ Beyond the standard kickstart configuration, this setup includes:
 
 #### Navigation & Productivity
 
-- **File Browser**: [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim?tab=readme-ov-file#mappings) for browsing files (`<leader>e` to open)
-- **Neotree**: File explorer with a tree view (`<leader>E` to toggle)
+- **File Browser**: [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim?tab=readme-ov-file#mappings) for browsing files (`<leader>E` to open)
+- **Neotree**: File explorer with a tree view (`<leader>e` to toggle)
 - **Window Picker**: Easily select which window to open a file in
 - **Toggle Terminal**: Floating terminal inside Neovim
   - Access with `<leader>tt` (floating), `<leader>th` (horizontal), `<leader>tv` (vertical)
