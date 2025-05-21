@@ -22,7 +22,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **Toggle Terminal**: Floating terminal inside Neovim
   - Access with `<leader>tt` (floating), `<leader>th` (horizontal), `<leader>tv` (vertical)
 - **VIM Easy Align**: Align text (`ga`) to align with a character on selection
-- **Flash**: Improve `/` search. Refer to [folke/flash.nvim](https://github.com/folke/flash.nvim?tab=readme-ov-file)
+- **Flash**: Better Navigation. Refer to [folke/flash.nvim](https://github.com/folke/flash.nvim?tab=readme-ov-file)
 - **AutoTag**: Automatically close HTML/XML tags
 - **Surround**: Easily add, change, or delete surrounding characters
 
