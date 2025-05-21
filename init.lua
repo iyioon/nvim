@@ -492,6 +492,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', function()
         require('telescope.builtin').buffers {
           sort_mru = true, -- rank by last‐used time
+          ignore_current_buffer = true,
         }
       end, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>E', function()
