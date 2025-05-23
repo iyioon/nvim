@@ -12,7 +12,7 @@ return {
       height = 1,
       options = {
         signcolumn = 'no',
-        cursorline = false,
+        cursorline = true,
         foldcolumn = '0',
       },
     },
@@ -39,4 +39,3 @@ return {
     end,
   },
 }
-
