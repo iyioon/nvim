@@ -1,19 +1,19 @@
 -- Distraction-free coding with zen-mode.nvim
 return {
-  "folke/zen-mode.nvim",
-  cmd = "ZenMode",
+  'folke/zen-mode.nvim',
+  cmd = 'ZenMode',
   keys = {
-    { "<leader>tz", "<cmd>ZenMode<CR>", desc = "[T]oggle [Z]en mode" },
+    { '<leader>tz', '<cmd>ZenMode<CR>', desc = '[T]oggle [Z]en mode' },
   },
   opts = {
     window = {
       backdrop = 0.95,
-      width = 120,
+      width = 1.0,
       height = 1,
       options = {
-        signcolumn = "no",
+        signcolumn = 'no',
         cursorline = false,
-        foldcolumn = "0",
+        foldcolumn = '0',
       },
     },
     plugins = {
@@ -39,3 +39,4 @@ return {
     end,
   },
 }
+
