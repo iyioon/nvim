@@ -1,4 +1,26 @@
 return {
+  {
+    'stevearc/oil.nvim',
+    cmd = { 'Oil' },
+    keys = {
+      { '<leader>E', '<cmd>Oil<CR>', desc = 'Open Oil file explorer' },
+    },
+    config = function()
+      require('oil').setup {
+        default_file_explorer = false,
+        delete_to_trash = true,
+        watch_for_changes = true,
+        show_hidden = false,
+        sort = {
+          -- sort order can be "asc" or "desc"
+          -- see :help oil-columns to see which columns are sortable
+          { 'type', 'asc' },
+          { 'name', 'asc' },
+        },
+      }
+    end,
+  },
+
   { -- NeoTree File Explorer
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',

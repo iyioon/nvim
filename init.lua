@@ -409,8 +409,6 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
-      { 'nvim-telescope/telescope-file-browser.nvim' },
-
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
@@ -451,32 +449,12 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
-          file_browser = {
-            hijack_netrw = true,
-            attach_mappings = function(prompt_bufnr, map)
-              map('i', '<C-d>', function()
-                local st = require 'telescope.actions.state'
-                local entry = st.get_selected_entry()
-                if not entry then
-                  return
-                end
-                vim.fn.system { 'trash', entry.path }
-                local picker = st.get_current_picker(prompt_bufnr)
-                picker:refresh(picker.finder, {
-                  reset_prompt = true,
-                  multi = picker._multi,
-                })
-              end, { desc = 'Move file to macOS Trash' })
-              return true -- keep all the other default mappings
-            end,
-          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      pcall(require('telescope').load_extension, 'file_browser')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -495,14 +473,6 @@ require('lazy').setup({
           ignore_current_buffer = true,
         }
       end, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>E', function()
-        require('telescope').extensions.file_browser.file_browser {
-          path = vim.fn.expand '%:p:h',
-          respect_gitignore = false,
-          hidden = false,
-          select_buffer = true, -- highlight current file
-        }
-      end, { desc = 'File browser' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
