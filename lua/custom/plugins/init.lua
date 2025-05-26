@@ -14,4 +14,5 @@ return {
   { import = 'custom.plugins.zen' }, -- Distraction-free coding
   { import = 'custom.plugins.file-explorer' },
   { import = 'custom.plugins.terminal' },
+  { import = 'custom.plugins.fold' },
 }

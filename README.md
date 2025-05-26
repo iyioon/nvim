@@ -25,6 +25,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **Flash**: Better Navigation. Refer to [folke/flash.nvim](https://github.com/folke/flash.nvim?tab=readme-ov-file)
 - **AutoTag**: Automatically close HTML/XML tags
 - **Surround**: Easily add, change, or delete surrounding characters
+- **Fold**: Fold sections. `za` to fold
 
 #### Language Support
 
