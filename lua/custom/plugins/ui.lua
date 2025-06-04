@@ -6,7 +6,7 @@ return {
     lazy = false, -- Load this plugin at startup
     config = function()
       require('cyberdream').setup {
-        saturation = 0.8, -- Set to a value less than 1.0 for slightly less contrast
+        saturation = 1, -- Set to a value less than 1.0 for slightly less contrast
         transparent = true,
       }
       vim.cmd.colorscheme 'cyberdream'
@@ -110,7 +110,7 @@ return {
                 separator = ' ',
               },
               -- List of LSP names to ignore (e.g., `null-ls`):
-              ignore_lsp = { 'GitHub Copilot' },
+              ignore_lsp = { 'copilot' },
             },
           },
         },
