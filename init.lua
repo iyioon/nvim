@@ -780,7 +780,6 @@ require('lazy').setup({
         'pyright',
         'texlab',
         'latexindent',
-        'ltex-ls',
         'typescript-language-server',
         'rust-analyzer',
       })
