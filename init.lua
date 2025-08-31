@@ -157,10 +157,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Make tabs 2 spaces
-vim.opt.expandtab = true -- Turn tab into spaces
-vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
-vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
-vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
+-- vim.opt.expandtab = true -- Turn tab into spaces
+-- vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
+-- vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
+-- vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -753,6 +753,10 @@ require('lazy').setup({
             },
           },
         },
+
+        harper_ls = {
+          filetypes = { 'markdown' }, -- only run on *.md
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -782,6 +786,7 @@ require('lazy').setup({
         'latexindent',
         'typescript-language-server',
         'rust-analyzer',
+        'harper_ls', -- LSP for spelling and grammar
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
