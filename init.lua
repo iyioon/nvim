@@ -236,6 +236,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.expandtab = false -- insert real tabs
+    vim.opt_local.tabstop = 4 -- show a tab as 4 spaces wide
+    vim.opt_local.shiftwidth = 4 -- indentation size
+    vim.opt_local.softtabstop = 0 -- <Tab> inserts a literal tab
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -847,6 +857,12 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      formatters = {
+        prettier = {
+          -- boolean flags are just added (don’t pass "true")
+          append_args = { '--use-tabs', '--tab-width', '4' },
+        },
       },
     },
   },
