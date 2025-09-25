@@ -156,16 +156,16 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Make tabs 2 spaces
--- vim.opt.expandtab = true -- Turn tab into spaces
--- vim.opt.shiftwidth = 2 -- How many spaces to use for autoindent
--- vim.opt.tabstop = 2 -- A real tab counts for 2 spaces
--- vim.opt.softtabstop = 2 -- Backspace feels like 2 spaces
-
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
+-- Tab settings
+vim.opt.expandtab = false -- default: insert real tabs
+vim.opt.tabstop = 4 -- visual width of a tab
+vim.opt.softtabstop = 0 -- <Tab>/<BS> insert/delete real tabs
+vim.opt.shiftwidth = 0 -- >>/<< uses tabstop when 0
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -262,7 +262,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
