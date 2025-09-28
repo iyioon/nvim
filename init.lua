@@ -167,6 +167,15 @@ vim.opt.tabstop = 4 -- visual width of a tab
 vim.opt.softtabstop = 0 -- <Tab>/<BS> insert/delete real tabs
 vim.opt.shiftwidth = 0 -- >>/<< uses tabstop when 0
 
+-- Enable spell checking globally (UK English)
+vim.opt.spell = false
+vim.opt.spelllang = { 'en_gb' }
+
+-- Toggle spell (window-local)
+vim.keymap.set('n', '<leader>ts', function()
+  vim.wo.spell = not vim.wo.spell
+end, { desc = '[T]oggle [S]pell' })
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
