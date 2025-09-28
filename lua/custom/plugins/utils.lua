@@ -77,7 +77,7 @@ return {
         suggestion = {
           auto_trigger = true,
           keymap = {
-            accept = '<M-l>', -- Alt-l to accept
+            accept = '<C-l>', -- Alt-l to accept
             prev = '<M-[>', -- Alt-[ to go to previous suggestion
             next = '<M-]>', -- Alt-] to go to next suggestion
             dismiss = '<C-]>', -- Ctrl-] to dismiss
