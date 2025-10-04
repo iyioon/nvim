@@ -166,12 +166,6 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
--- Tab settings
-vim.opt.expandtab = false -- default: insert real tabs
-vim.opt.tabstop = 4 -- visual width of a tab
-vim.opt.softtabstop = 0 -- <Tab>/<BS> insert/delete real tabs
-vim.opt.shiftwidth = 0 -- >>/<< uses tabstop when 0
-
 -- Enable spell checking globally (UK English)
 vim.opt.spell = false
 vim.opt.spelllang = { 'en_gb' }
