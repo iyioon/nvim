@@ -774,10 +774,6 @@ require('lazy').setup({
             },
           },
         },
-
-        harper_ls = {
-          filetypes = { 'markdown' }, -- only run on *.md
-        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -807,7 +803,6 @@ require('lazy').setup({
         'latexindent',
         'typescript-language-server',
         'rust-analyzer',
-        'harper_ls', -- LSP for spelling and grammar
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
