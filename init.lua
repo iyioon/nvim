@@ -855,21 +855,15 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        markdown = { 'prettier' },
         tex = { 'latexindent' },
         latex = { 'latexindent' },
         html = { 'prettier' },
+        css = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
-      },
-      formatters = {
-        prettier = {
-          -- boolean flags are just added (don’t pass "true")
-          append_args = { '--use-tabs', '--tab-width', '4' },
-        },
       },
     },
   },
