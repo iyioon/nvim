@@ -12,7 +12,7 @@ return {
         doc = { -- Render images inside markdown, etc
           enabled = true,
           inline = false,
-          float = true,
+          float = false,
           max_width = 80,
           max_height = 80,
         },
