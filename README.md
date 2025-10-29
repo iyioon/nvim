@@ -26,6 +26,9 @@ Beyond the standard kickstart configuration, this setup includes:
 - **AutoTag**: Automatically close HTML/XML tags
 - **Surround**: Easily add, change, or delete surrounding characters
 - **Fold**: Fold sections. `za` to fold
+- **Multigrep**: Search with filetype filtering (`<leader>sg`)
+  - Usage: Type search query, then two spaces, then file pattern
+  - Example: `function  *.lua` searches for "function" in Lua files only
 
 #### Language Support
 
