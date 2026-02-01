@@ -83,7 +83,24 @@ return {
             dismiss = '<C-]>', -- Ctrl-] to dismiss
           },
         },
+      filetypes = {
+        ["*"] = true, -- Enable for all other filetypes 
+      },
       }
+
+      -- Add keybinding to toggle Copilot suggestions
+      vim.keymap.set('n', '<leader>tp', function()
+        require('copilot.suggestion').toggle_auto_trigger()
+        if vim.b.copilot_suggestion_auto_trigger == false then
+          print('Copilot suggestions disabled')
+        else
+          print('Copilot suggestions enabled')
+        end
+      end, { 
+        noremap = true, 
+        silent = true,
+        desc = '[T]oggle Co[p]ilot' 
+      })
     end,
   },
 

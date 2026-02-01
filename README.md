@@ -44,6 +44,7 @@ Beyond the standard kickstart configuration, this setup includes:
 #### Code Assistance
 
 - **GitHub Copilot**: AI-powered code suggestions as you type
+  - Toggle suggestions with `<leader>tp`
 - **Auto-pairs**: Automatically closes brackets, quotes, and parentheses
 - **Template System**: Insert templates into new files
   - LaTeX templates with `<leader>nt`
