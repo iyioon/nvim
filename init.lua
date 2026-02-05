@@ -912,6 +912,8 @@ require('lazy').setup({
         latex = { 'latexindent' },
         html = { 'prettier' },
         css = { 'prettier' },
+        javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

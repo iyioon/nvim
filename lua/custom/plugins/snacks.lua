@@ -107,19 +107,19 @@ return {
       require('snacks').setup(opts)
 
       -- Set up autocommands to toggle dim based on insert mode
-      vim.api.nvim_create_autocmd('InsertEnter', {
-        callback = function()
-          require('snacks').dim.enable()
-        end,
-        desc = 'Enable dim when entering insert mode',
-      })
-
-      vim.api.nvim_create_autocmd('InsertLeave', {
-        callback = function()
-          require('snacks').dim.disable()
-        end,
-        desc = 'Disable dim when leaving insert mode',
-      })
+      -- vim.api.nvim_create_autocmd('InsertEnter', {
+      --   callback = function()
+      --     require('snacks').dim.enable()
+      --   end,
+      --   desc = 'Enable dim when entering insert mode',
+      -- })
+      --
+      -- vim.api.nvim_create_autocmd('InsertLeave', {
+      --   callback = function()
+      --     require('snacks').dim.disable()
+      --   end,
+      --   desc = 'Disable dim when leaving insert mode',
+      -- })
       -- LazyGit keybindings
       vim.keymap.set('n', '<leader>gg', function()
         require('snacks').lazygit.open()
