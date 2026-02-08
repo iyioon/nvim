@@ -26,6 +26,7 @@ Beyond the standard kickstart configuration, this setup includes:
 - **AutoTag**: Automatically close HTML/XML tags
 - **Surround**: Easily add, change, or delete surrounding characters
 - **Fold**: Fold sections. `za` to fold
+- **Color Picker**: Pick and edit colors with ccc.nvim (`<leader>cp` to pick, `<leader>cc` to convert, `<leader>ch` to toggle highlighter)
 - **Multigrep**: Search with filetype filtering (`<leader>sg`)
   - Usage: Type search query, then two spaces, then file pattern
   - Example: `function  *.lua` searches for "function" in Lua files only

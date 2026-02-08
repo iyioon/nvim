@@ -15,4 +15,5 @@ return {
   { import = 'custom.plugins.file-explorer' },
   { import = 'custom.plugins.terminal' },
   { import = 'custom.plugins.fold' },
+  { import = 'custom.plugins.colorpicker' },
 }
