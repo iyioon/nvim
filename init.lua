@@ -1080,24 +1080,29 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-      local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'latex' }
-      require('nvim-treesitter').install(filetypes)
-
-      -- Enable treesitter highlighting for supported filetypes
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = filetypes,
-        callback = function()
-          -- Don't enable for tex/latex if vimtex is handling it
-          local ft = vim.bo.filetype
+    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    opts = {
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'latex' },
+      -- Autoinstall languages that are not installed
+      auto_install = true,
+      highlight = {
+        enable = true,
+        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --  If you are experiencing weird indenting issues, add the language to
+        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        additional_vim_regex_highlighting = { 'ruby' },
+        -- Disable for tex/latex if vimtex is handling it
+        disable = function(_, buf)
+          local ft = vim.bo[buf].filetype
           if (ft == 'tex' or ft == 'latex') and vim.g.vimtex_enabled then
-            return
+            return true
           end
-          vim.treesitter.start()
+          return false
         end,
-      })
-    end,
+      },
+      indent = { enable = true, disable = { 'ruby' } },
+    },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
