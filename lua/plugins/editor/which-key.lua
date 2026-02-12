@@ -47,10 +47,8 @@ return {
       -- Document key groups
       spec = {
         { '<leader>b', group = '[B]uffer' },
-        { '<leader>c', group = '[C]olor' },
         { '<leader>g', group = '[G]it' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-
         { '<leader>m', group = '[M]arkdown' },
         { '<leader>n', group = '[N]ew' },
         { '<leader>s', group = '[S]earch' },

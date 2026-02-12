@@ -12,17 +12,8 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      -- Image viewer
-      image = {
-        enabled = true,
-        doc = {
-          enabled = true,
-          inline = false,
-          float = false,
-          max_width = 80,
-          max_height = 80,
-        },
-      },
+      -- Image viewer (disabled for server - requires graphical terminal)
+      image = { enabled = false },
 
       -- Indent guides
       indent = { enabled = true },

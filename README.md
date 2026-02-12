@@ -1,6 +1,8 @@
-# iyioon/nvim
+# iyioon/nvim (lightweight-server)
 
-A modular Neovim configuration extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Features a clean structure, modern plugins, and sensible defaults for a productive editing experience.
+A lightweight Neovim configuration for headless Linux servers, extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Optimized for SSH/terminal use without graphical dependencies.
+
+> **Note:** This is the `lightweight-server` branch. For the full configuration with Copilot, color picker, and browser-based markdown preview, see the `master` branch.
 
 ## Installation
 
@@ -17,9 +19,7 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 
 **Optional:**
 - [lazygit](https://github.com/jesseduffield/lazygit#installation) - for Git UI (`<leader>gg`)
-- [chafa](https://github.com/hpjansson/chafa) - for dashboard images
-- Node.js/npm - for TypeScript, Markdown preview
-- Python - for Python development
+- A [Nerd Font](https://www.nerdfonts.com/) (for icons, optional)
 
 ### Clean Install (Remove Existing Config)
 
@@ -62,7 +62,7 @@ Remove-Item -Recurse -Force $env:LOCALAPPDATA\nvim-data
 <details><summary>Linux / macOS</summary>
 
 ```bash
-git clone https://github.com/iyioon/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone -b lightweight-server https://github.com/iyioon/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
@@ -168,7 +168,7 @@ sudo apt install make gcc ripgrep unzip git xclip neovim
 ### UI
 - **Cyberdream** - Color scheme with transparency support
 - **Lualine** - Statusline
-- **Snacks.nvim** - Dashboard, indent guides, smooth scroll, image viewer
+- **Snacks.nvim** - Dashboard, indent guides, smooth scroll
 - **nvim-ufo** - Modern folding with LSP/Treesitter
 - **Todo-comments** - Highlight TODO, FIXME, NOTE comments
 
@@ -187,10 +187,7 @@ sudo apt install make gcc ripgrep unzip git xclip neovim
 - **nvim-ts-autotag** - Auto-close HTML/XML tags
 
 ### Language Support
-- **Markdown** - Browser preview, in-buffer rendering, bullet auto-increment
-
-### AI
-- **GitHub Copilot** - AI code suggestions
+- **Markdown** - In-buffer rendering, bullet auto-increment
 
 ## Keybindings
 
@@ -280,23 +277,6 @@ Leader key: `<Space>`
 | `zR` | Open all folds |
 | `zM` | Close all folds |
 
-### Color Picker
-
-| Key | Description |
-|-----|-------------|
-| `<leader>cp` | Open color picker |
-| `<leader>cc` | Convert color format |
-| `<leader>ch` | Toggle color highlighter |
-
-### Copilot
-
-| Key | Description |
-|-----|-------------|
-| `<C-l>` | Accept suggestion (insert mode) |
-| `<M-]>` / `<M-[>` | Next / previous suggestion |
-| `<C-]>` | Dismiss suggestion |
-| `<leader>tp` | Toggle Copilot |
-
 ### Toggles
 
 | Key | Description |
@@ -305,13 +285,11 @@ Leader key: `<Space>`
 | `<leader>th` | Toggle inlay hints (LSP) |
 | `<leader>tz` | Toggle zen mode |
 | `<leader>ts` | Toggle spell check |
-| `<leader>tp` | Toggle Copilot |
 
 ### Markdown
 
 | Key | Description |
 |-----|-------------|
-| `<leader>mp` | Toggle browser preview |
 | `<leader>mr` | Toggle in-buffer render |
 
 ## Directory Structure

@@ -1,29 +1,11 @@
 -- ============================================================================
 -- Markdown Support
 -- ============================================================================
--- Markdown preview, rendering, and editing enhancements.
+-- Markdown rendering and editing enhancements.
+-- Note: Browser preview removed for server compatibility.
 -- ============================================================================
 
 return {
-  -- Markdown Preview in browser
-  {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
-    init = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-    end,
-    ft = { 'markdown' },
-    config = function()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'markdown',
-        callback = function()
-          vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreviewToggle<CR>', { buffer = true, desc = 'Toggle [M]arkdown [P]review' })
-        end,
-      })
-    end,
-  },
-
   -- Render markdown in buffer
   {
     'MeanderingProgrammer/render-markdown.nvim',
