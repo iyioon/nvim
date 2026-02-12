@@ -1,6 +1,12 @@
--- Markdown related plugins and configurations
+-- ============================================================================
+-- Markdown Support
+-- ============================================================================
+-- Markdown preview, rendering, and editing enhancements.
+-- ============================================================================
+
 return {
-  { -- Markdown Preview
+  -- Markdown Preview in browser
+  {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     build = 'cd app && yarn install',
@@ -8,10 +14,7 @@ return {
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
     ft = { 'markdown' },
-
-    -- Configure keymaps for Markdown Preview - only applied to markdown files
     config = function()
-      -- Create buffer-local keymaps that only apply to markdown files
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'markdown',
         callback = function()
@@ -21,20 +24,18 @@ return {
     end,
   },
 
+  -- Render markdown in buffer
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
-
-    -- Configure keymaps for Render Markdown - only applied to markdown files
     config = function()
-      -- Enable completions for Render Markdown
       require('render-markdown').setup {
         completions = { blink = { enabled = true } },
       }
-      -- Create buffer-local keymaps that only apply to markdown files
+
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'markdown',
         callback = function()
@@ -42,7 +43,7 @@ return {
         end,
       })
 
-      -- Enable linebreaks for markdown files
+      -- Enable linebreaks for markdown
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'markdown',
         callback = function()
@@ -52,8 +53,6 @@ return {
     end,
   },
 
-  -- Auto Increment bullets
-  {
-    'bullets-vim/bullets.vim',
-  },
+  -- Auto-increment bullets
+  { 'bullets-vim/bullets.vim' },
 }
