@@ -14,17 +14,17 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
-          'bash',
-          'c',
-          'diff',
-          'html',
-          'lua',
-          'luadoc',
-          'markdown',
-          'markdown_inline',
-          'query',
-          'vim',
-          'vimdoc',
+          'bash', -- Shell scripts
+          'c', -- C language (also helps with many parsers)
+          'diff', -- Git diff output
+          'html', -- HTML files
+          'lua', -- Lua (Neovim config)
+          'luadoc', -- Lua documentation comments
+          'markdown', -- Markdown files
+          'markdown_inline', -- Inline markdown (code blocks, etc.)
+          'query', -- Treesitter query files
+          'vim', -- Vimscript
+          'vimdoc', -- Vim help files
         },
         auto_install = true,
         highlight = {

@@ -43,18 +43,19 @@ return {
     opts = {
       ensure_installed = {
         -- LSP servers
-        'lua-language-server',
-        'clangd',
-        'css-lsp',
-        'html-lsp',
-        'jdtls',
-        'marksman',
-        'pyright',
-        'typescript-language-server',
-        'rust-analyzer',
+        'lua-language-server', -- Lua (Neovim config)
+        'clangd', -- C/C++
+        'css-lsp', -- CSS
+        'html-lsp', -- HTML
+        'jdtls', -- Java
+        'marksman', -- Markdown
+        'pyright', -- Python
+        'typescript-language-server', -- TypeScript/JavaScript
+        'rust-analyzer', -- Rust
+
         -- Formatters
-        'stylua',
-        'prettier',
+        'stylua', -- Lua formatter
+        'prettier', -- JS/TS/CSS/HTML/JSON/Markdown formatter
       },
     },
   },
