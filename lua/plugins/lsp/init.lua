@@ -42,19 +42,24 @@ return {
     dependencies = { 'mason-org/mason.nvim' },
     opts = {
       ensure_installed = {
-        -- LSP servers
-        'lua-language-server',
-        'clangd',
-        'css-lsp',
-        'html-lsp',
-        'jdtls',
-        'marksman',
-        'pyright',
-        'typescript-language-server',
-        'rust-analyzer',
+        -- LSP servers (minimal set for servers)
+        'lua-language-server', -- Essential for Neovim config
+        'pyright', -- Python is common on servers
+        'marksman', -- Markdown for documentation
+
         -- Formatters
-        'stylua',
-        'prettier',
+        'stylua', -- Lua formatter
+
+        -- Uncomment as needed:
+        -- 'clangd',                     -- C/C++ (large ~500MB)
+        -- 'rust-analyzer',              -- Rust
+        -- 'gopls',                      -- Go
+        -- 'bash-language-server',       -- Bash/Shell scripts
+        -- 'typescript-language-server', -- TypeScript/JavaScript
+        -- 'css-lsp',                    -- CSS
+        -- 'html-lsp',                   -- HTML
+        -- 'jdtls',                      -- Java (very large ~1GB+)
+        -- 'prettier',                   -- JS/TS/CSS/HTML formatter
       },
     },
   },
