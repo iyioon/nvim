@@ -18,6 +18,7 @@ local ensure_installed = {
   'luadoc', -- Lua documentation comments
   'markdown', -- Markdown files
   'markdown_inline', -- Inline markdown (code blocks, etc.)
+  'python', -- Python
   'query', -- Treesitter query files
   'vim', -- Vimscript
   'vimdoc', -- Vim help files
