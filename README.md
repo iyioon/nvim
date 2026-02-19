@@ -7,19 +7,29 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 ### Prerequisites
 
 **Required:**
-- [Neovim](https://neovim.io/) 0.10+ (0.11+ recommended)
-- Git
-- A C compiler (`gcc` or `clang`)
-- `make` (for building some plugins)
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
-- [fd](https://github.com/sharkdp/fd#installation)
-- A [Nerd Font](https://www.nerdfonts.com/) (for icons)
+- [Neovim](https://neovim.io/) 0.10+ (0.11+ recommended) - `brew install neovim`
+- Git - `brew install git`
+- A C compiler (`gcc` or `clang`) - `brew install gcc`
+- `make` (for building some plugins) - `brew install make`
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - `brew install ripgrep`
+- [fd](https://github.com/sharkdp/fd#installation) - `brew install fd`
+- A [Nerd Font](https://www.nerdfonts.com/) (for icons) - `brew install --cask font-hack-nerd-font`
 
 **Optional:**
-- [lazygit](https://github.com/jesseduffield/lazygit#installation) - for Git UI (`<leader>gg`)
-- [chafa](https://github.com/hpjansson/chafa) - for dashboard images
-- Node.js/npm - for TypeScript, Markdown preview
-- Python - for Python development
+- [lazygit](https://github.com/jesseduffield/lazygit#installation) - for Git UI (`<leader>gg`) - `brew install lazygit`
+- [chafa](https://github.com/hpjansson/chafa) - for dashboard images - `brew install chafa`
+- Node.js/npm - for TypeScript, Markdown preview - `brew install node`
+- Python - for Python development - `brew install python`
+
+**Install all (Homebrew):**
+```bash
+# Required
+brew install neovim git gcc make ripgrep fd
+brew install --cask font-hack-nerd-font
+
+# Optional
+brew install lazygit chafa node python
+```
 
 ### Clean Install (Remove Existing Config)
 
