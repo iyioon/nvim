@@ -12,14 +12,20 @@
 local ensure_installed = {
   'bash', -- Shell scripts
   'c', -- C language (also helps with many parsers)
+  'css', -- CSS files
   'diff', -- Git diff output
   'html', -- HTML files
+  'javascript', -- JavaScript
+  'jsdoc', -- JSDoc comments
+  'json', -- JSON files
   'lua', -- Lua (Neovim config)
   'luadoc', -- Lua documentation comments
   'markdown', -- Markdown files
   'markdown_inline', -- Inline markdown (code blocks, etc.)
   'python', -- Python
   'query', -- Treesitter query files
+  'tsx', -- TypeScript JSX (React)
+  'typescript', -- TypeScript
   'vim', -- Vimscript
   'vimdoc', -- Vim help files
 }

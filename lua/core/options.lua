@@ -27,8 +27,12 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
--- Indentation
+-- Indentation (defaults, guess-indent.nvim may override per-file)
 vim.o.breakindent = true
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 
 -- Undo history persistence
 vim.o.undofile = true
