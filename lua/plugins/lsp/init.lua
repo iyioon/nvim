@@ -84,12 +84,15 @@ return {
       -- Load server configurations
       local servers = require 'config.lsp_servers'
 
-      -- LSP capabilities with blink.cmp
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      -- LSP capabilities with blink.cmp (include Neovim defaults)
+      local capabilities = require('blink.cmp').get_lsp_capabilities(nil, true)
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
+
+      -- Set default capabilities for all LSP servers
+      vim.lsp.config('*', { capabilities = capabilities })
 
       -- Configure each server using vim.lsp.config (Neovim 0.11+)
       for server_name, server_config in pairs(servers) do
