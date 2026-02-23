@@ -13,22 +13,30 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 - `make` (for building some plugins) - `brew install make`
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - `brew install ripgrep`
 - [fd](https://github.com/sharkdp/fd#installation) - `brew install fd`
+- `curl` - for downloading packages (Mason, Treesitter)
+- `tar`, `gzip`, `unzip` - for extracting packages (Mason, Treesitter)
 - A [Nerd Font](https://www.nerdfonts.com/) (for icons) - `brew install --cask font-hack-nerd-font`
+
+**Recommended:**
+- [Node.js](https://nodejs.org/) v22+ - required for Copilot and many LSP servers (css-lsp, html-lsp, pyright, tsserver) - `brew install node`
 
 **Optional:**
 - [lazygit](https://github.com/jesseduffield/lazygit#installation) - for Git UI (`<leader>gg`) - `brew install lazygit`
 - [chafa](https://github.com/hpjansson/chafa) - for dashboard images - `brew install chafa`
-- Node.js/npm - for TypeScript, Markdown preview - `brew install node`
 - Python - for Python development - `brew install python`
+- Java Runtime (JRE/JDK) - if using Java LSP (jdtls)
 
 **Install all (Homebrew):**
 ```bash
 # Required
-brew install neovim git gcc make ripgrep fd
+brew install neovim git gcc make ripgrep fd curl
 brew install --cask font-hack-nerd-font
 
+# Recommended
+brew install node  # v22+ for Copilot and LSP servers
+
 # Optional
-brew install lazygit chafa node python
+brew install lazygit chafa python
 ```
 
 ### Clean Install (Remove Existing Config)
@@ -105,7 +113,8 @@ git clone https://github.com/iyioon/nvim.git "${env:LOCALAPPDATA}\nvim"
 <details><summary>macOS (Homebrew)</summary>
 
 ```bash
-brew install neovim ripgrep fd lazygit
+brew install neovim git gcc make ripgrep fd lazygit curl node
+brew install --cask font-hack-nerd-font
 ```
 
 </details>
@@ -116,7 +125,11 @@ brew install neovim ripgrep fd lazygit
 # Add Neovim PPA for latest version
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update
-sudo apt install make gcc ripgrep unzip git xclip neovim fd-find
+sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
+
+# Node.js v22+ (for Copilot and LSP servers)
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
 ```
 
 </details>
@@ -124,7 +137,7 @@ sudo apt install make gcc ripgrep unzip git xclip neovim fd-find
 <details><summary>Fedora</summary>
 
 ```bash
-sudo dnf install -y gcc make git ripgrep fd-find unzip neovim
+sudo dnf install -y gcc make git ripgrep fd-find unzip curl xclip neovim nodejs
 ```
 
 </details>
@@ -132,7 +145,7 @@ sudo dnf install -y gcc make git ripgrep fd-find unzip neovim
 <details><summary>Arch Linux</summary>
 
 ```bash
-sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip curl xclip neovim nodejs npm
 ```
 
 </details>
@@ -142,7 +155,12 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 Run as Administrator:
 
 ```cmd
-choco install -y neovim git ripgrep wget fd unzip gzip mingw make
+choco install -y neovim git ripgrep wget fd unzip gzip mingw make curl nodejs
+```
+
+Then install a [Nerd Font](https://www.nerdfonts.com/font-downloads) manually or via:
+```cmd
+choco install -y nerd-fonts-hack
 ```
 
 </details>
@@ -154,7 +172,11 @@ wsl --install
 wsl
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update
-sudo apt install make gcc ripgrep unzip git xclip neovim
+sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
+
+# Node.js v22+ (for Copilot and LSP servers)
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
 ```
 
 </details>
