@@ -1,7 +1,7 @@
 -- ============================================================================
 -- Snacks.nvim
 -- ============================================================================
--- Collection of QoL plugins: indent, scroll, dim, dashboard, images, lazygit.
+-- Collection of QoL plugins: indent, scroll, dim, dashboard, lazygit.
 -- https://github.com/folke/snacks.nvim
 -- ============================================================================
 
@@ -25,18 +25,6 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      -- Image viewer
-      image = {
-        enabled = true,
-        doc = {
-          enabled = true,
-          inline = false,
-          float = false,
-          max_width = 80,
-          max_height = 80,
-        },
-      },
-
       -- Indent guides
       indent = { enabled = true },
 

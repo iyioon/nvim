@@ -22,7 +22,6 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 
 **Optional:**
 - [lazygit](https://github.com/jesseduffield/lazygit#installation) - for Git UI (`<leader>gg`) - `brew install lazygit`
-- [chafa](https://github.com/hpjansson/chafa) - for dashboard images - `brew install chafa`
 - Python - for Python development - `brew install python`
 - Java Runtime (JRE/JDK) - if using Java LSP (jdtls)
 
@@ -36,7 +35,7 @@ brew install --cask font-hack-nerd-font
 brew install node  # v22+ for Copilot and LSP servers
 
 # Optional
-brew install lazygit chafa python
+brew install lazygit python
 ```
 
 ### Clean Install (Remove Existing Config)
@@ -200,7 +199,7 @@ sudo apt install -y nodejs
 ### UI
 - **Cyberdream** - Color scheme with transparency support
 - **Lualine** - Statusline
-- **Snacks.nvim** - Dashboard, indent guides, smooth scroll, image viewer
+- **Snacks.nvim** - Dashboard, indent guides, smooth scroll
 - **nvim-ufo** - Modern folding with LSP/Treesitter
 - **Todo-comments** - Highlight TODO, FIXME, NOTE comments
 
