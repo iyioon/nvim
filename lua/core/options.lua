@@ -22,8 +22,26 @@ vim.o.mouse = 'a'
 -- Don't show mode (statusline shows it)
 vim.o.showmode = false
 
--- Clipboard sync with OS (scheduled to avoid startup delay)
+-- Clipboard configuration
+-- Use OSC 52 for SSH sessions (enables clipboard sync over SSH)
+-- Otherwise use system clipboard
 vim.schedule(function()
+  if os.getenv 'SSH_TTY' then
+    -- Force OSC 52 clipboard provider for SSH sessions
+    -- This sends clipboard contents via terminal escape sequences
+    -- Works with terminals that support OSC 52 (iTerm2, Alacritty, Kitty, WezTerm, etc.)
+    vim.g.clipboard = {
+      name = 'OSC 52',
+      copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+        ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+      },
+      paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+        ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+      },
+    }
+  end
   vim.o.clipboard = 'unnamedplus'
 end)
 
