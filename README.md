@@ -11,6 +11,7 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 - Git - `brew install git`
 - A C compiler (`gcc` or `clang`) - `brew install gcc`
 - `make` (for building some plugins) - `brew install make`
+- [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) 0.26.1+ - required for nvim-treesitter parser installation - `brew install tree-sitter-cli`
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - `brew install ripgrep`
 - [fd](https://github.com/sharkdp/fd#installation) - `brew install fd`
 - `curl` - for downloading packages (Mason, Treesitter)
@@ -28,7 +29,7 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 **Install all (Homebrew):**
 ```bash
 # Required
-brew install neovim git gcc make ripgrep fd curl
+brew install neovim git gcc make tree-sitter-cli ripgrep fd curl
 brew install --cask font-hack-nerd-font
 
 # Recommended
@@ -112,7 +113,7 @@ git clone https://github.com/iyioon/nvim.git "${env:LOCALAPPDATA}\nvim"
 <details><summary>macOS (Homebrew)</summary>
 
 ```bash
-brew install neovim git gcc make ripgrep fd lazygit curl node
+brew install neovim git gcc make tree-sitter-cli ripgrep fd lazygit curl node
 brew install --cask font-hack-nerd-font
 ```
 
@@ -126,6 +127,10 @@ sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update
 sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
 
+# tree-sitter CLI (required for nvim-treesitter)
+cargo install tree-sitter-cli
+# Or via npm: npm install -g tree-sitter-cli
+
 # Node.js v22+ (for Copilot and LSP servers)
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt install -y nodejs
@@ -137,6 +142,10 @@ sudo apt install -y nodejs
 
 ```bash
 sudo dnf install -y gcc make git ripgrep fd-find unzip curl xclip neovim nodejs
+
+# tree-sitter CLI (required for nvim-treesitter)
+cargo install tree-sitter-cli
+# Or via npm: npm install -g tree-sitter-cli
 ```
 
 </details>
@@ -144,7 +153,7 @@ sudo dnf install -y gcc make git ripgrep fd-find unzip curl xclip neovim nodejs
 <details><summary>Arch Linux</summary>
 
 ```bash
-sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip curl xclip neovim nodejs npm
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip curl xclip neovim nodejs npm tree-sitter
 ```
 
 </details>
@@ -155,6 +164,9 @@ Run as Administrator:
 
 ```cmd
 choco install -y neovim git ripgrep wget fd unzip gzip mingw make curl nodejs
+
+# tree-sitter CLI (required for nvim-treesitter)
+npm install -g tree-sitter-cli
 ```
 
 Then install a [Nerd Font](https://www.nerdfonts.com/font-downloads) manually or via:
@@ -172,6 +184,10 @@ wsl
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update
 sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
+
+# tree-sitter CLI (required for nvim-treesitter)
+cargo install tree-sitter-cli
+# Or via npm: npm install -g tree-sitter-cli
 
 # Node.js v22+ (for Copilot and LSP servers)
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
