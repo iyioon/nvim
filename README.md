@@ -153,7 +153,7 @@ cargo install tree-sitter-cli
 <details><summary>Arch Linux</summary>
 
 ```bash
-sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip curl xclip neovim nodejs npm tree-sitter
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip curl xclip neovim nodejs npm tree-sitter-cli
 ```
 
 </details>
