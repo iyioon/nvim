@@ -29,7 +29,12 @@ vim.schedule(function()
   if os.getenv 'SSH_TTY' then
     -- Force OSC 52 clipboard provider for SSH sessions
     -- This sends clipboard contents via terminal escape sequences
-    -- Works with terminals that support OSC 52 (iTerm2, Alacritty, Kitty, WezTerm, etc.)
+    -- Works with terminals that support OSC 52 (Ghostty, iTerm2, Windows Terminal, etc.)
+    --
+    -- Note: We only use OSC 52 for COPY, not paste. This is because:
+    -- 1. Many terminals (Windows Terminal, etc.) don't support OSC 52 read for security
+    -- 2. Using OSC 52 paste causes "Waiting for OSC 52 response" delays
+    -- 3. For external clipboard content, use terminal paste (Ctrl+Shift+V) instead of p
     vim.g.clipboard = {
       name = 'OSC 52',
       copy = {
@@ -37,8 +42,13 @@ vim.schedule(function()
         ['*'] = require('vim.ui.clipboard.osc52').copy '*',
       },
       paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste '+',
-        ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+        -- Use internal register for paste (avoids OSC 52 read which many terminals don't support)
+        ['+'] = function()
+          return vim.split(vim.fn.getreg '+', '\n')
+        end,
+        ['*'] = function()
+          return vim.split(vim.fn.getreg '*', '\n')
+        end,
       },
     }
   end
