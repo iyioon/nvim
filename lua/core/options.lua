@@ -40,16 +40,20 @@ vim.schedule(function()
     -- Cache for storing yanked content (since OSC 52 paste isn't reliable across terminals)
     local clipboard_cache = { ['+'] = {}, ['*'] = {} }
 
+    -- Get the OSC 52 copy functions
+    local osc52_copy_plus = osc52.copy '+'
+    local osc52_copy_star = osc52.copy '*'
+
     vim.g.clipboard = {
       name = 'OSC 52',
       copy = {
         ['+'] = function(lines)
           clipboard_cache['+'] = lines
-          return osc52.copy('+')(lines)
+          osc52_copy_plus(lines)
         end,
         ['*'] = function(lines)
           clipboard_cache['*'] = lines
-          return osc52.copy('*')(lines)
+          osc52_copy_star(lines)
         end,
       },
       paste = {
