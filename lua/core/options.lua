@@ -35,19 +35,30 @@ vim.schedule(function()
     -- 1. Many terminals (Windows Terminal, etc.) don't support OSC 52 read for security
     -- 2. Using OSC 52 paste causes "Waiting for OSC 52 response" delays
     -- 3. For external clipboard content, use terminal paste (Ctrl+Shift+V) instead of p
+    local osc52 = require 'vim.ui.clipboard.osc52'
+
+    -- Cache for storing yanked content (since OSC 52 paste isn't reliable across terminals)
+    local clipboard_cache = { ['+'] = {}, ['*'] = {} }
+
     vim.g.clipboard = {
       name = 'OSC 52',
       copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy '+',
-        ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+        ['+'] = function(lines)
+          clipboard_cache['+'] = lines
+          return osc52.copy('+')(lines)
+        end,
+        ['*'] = function(lines)
+          clipboard_cache['*'] = lines
+          return osc52.copy('*')(lines)
+        end,
       },
       paste = {
-        -- Use internal register for paste (avoids OSC 52 read which many terminals don't support)
+        -- Return cached content (avoids OSC 52 read which many terminals don't support)
         ['+'] = function()
-          return vim.split(vim.fn.getreg '+', '\n')
+          return clipboard_cache['+']
         end,
         ['*'] = function()
-          return vim.split(vim.fn.getreg '*', '\n')
+          return clipboard_cache['*']
         end,
       },
     }
