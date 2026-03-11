@@ -33,7 +33,17 @@ return {
       },
 
       -- Use readable title slugs instead of zettelkasten IDs
-      note_id_func = require('obsidian.builtin').title_id,
+      -- Converts "My Note Title" to "my-note-title"
+      ---@param title string|nil
+      ---@return string
+      note_id_func = function(title)
+        if title ~= nil then
+          -- Transform title to lowercase slug with hyphens
+          return title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+        end
+        -- Fallback to timestamp if no title
+        return tostring(os.time())
+      end,
 
       -- Daily notes configuration
       daily_notes = {
