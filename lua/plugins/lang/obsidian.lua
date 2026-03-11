@@ -49,7 +49,7 @@ return {
       daily_notes = {
         enabled = true,
         folder = '3_Areas/Calendar/All',
-        date_format = 'YYYY-MM-DD',
+        date_format = '%Y-%m-%d',
         workdays_only = false, -- include weekends
       },
 
