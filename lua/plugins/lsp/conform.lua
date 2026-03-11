@@ -33,12 +33,21 @@ return {
       -- end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        markdown = { 'markdownlint-cli2' },
         html = { 'prettier' },
         css = { 'prettier' },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
         python = { 'isort', 'black' },
         -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      },
+      formatters = {
+        ['markdownlint-cli2'] = {
+          prepend_args = {
+            '--config',
+            vim.fn.stdpath 'config' .. '/.markdownlint.yaml',
+          },
+        },
       },
     },
   },

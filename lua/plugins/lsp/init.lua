@@ -56,6 +56,9 @@ return {
         -- Formatters
         'stylua', -- Lua formatter
         'prettier', -- JS/TS/CSS/HTML/JSON/Markdown formatter
+        'markdownlint-cli2', -- Markdown linter/formatter
+        'isort', -- Python import sorter
+        'black', -- Python formatter
       },
     },
   },

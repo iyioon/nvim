@@ -359,6 +359,7 @@ Leader key: `<Space>`
 
 | Key | Description |
 |-----|-------------|
+| `<leader>f` | Format with markdownlint-cli2 |
 | `<leader>mp` | Toggle browser preview |
 | `<leader>mr` | Toggle in-buffer render |
 

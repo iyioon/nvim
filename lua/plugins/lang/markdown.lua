@@ -54,5 +54,11 @@ return {
   },
 
   -- Auto-increment bullets
-  { 'bullets-vim/bullets.vim' },
+  {
+    'bullets-vim/bullets.vim',
+    init = function()
+      -- Use only dash for bullet markers (no asterisks or plus signs)
+      vim.g.bullets_outline_levels = { 'std-' }
+    end,
+  },
 }
