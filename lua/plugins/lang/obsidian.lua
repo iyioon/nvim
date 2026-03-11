@@ -12,7 +12,7 @@ return {
     ft = 'markdown',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
+      'saghen/blink.cmp',
       'nvim-telescope/telescope.nvim',
     },
     ---@module 'obsidian'
@@ -94,10 +94,10 @@ return {
         sort = { 'id', 'aliases', 'tags', 'created', 'modified' },
       },
 
-      -- Use nvim-cmp for completion
+      -- Use blink.cmp for completion
       completion = {
-        nvim_cmp = true,
-        blink = false,
+        nvim_cmp = false,
+        blink = true,
         min_chars = 2,
       },
 

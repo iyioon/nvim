@@ -59,6 +59,9 @@ return {
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        per_filetype = {
+          markdown = { 'obsidian', 'obsidian_new', 'obsidian_tags', 'lsp', 'path', 'snippets' },
+        },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
