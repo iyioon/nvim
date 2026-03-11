@@ -363,6 +363,27 @@ Leader key: `<Space>`
 | `<leader>mp` | Toggle browser preview |
 | `<leader>mr` | Toggle in-buffer render |
 
+### Obsidian
+
+| Key | Description |
+|-----|-------------|
+| `<CR>` | Follow link / toggle checkbox |
+| `[o` / `]o` | Previous / next link |
+| `:Obsidian today` | Open today's daily note |
+| `:Obsidian yesterday` | Open yesterday's daily note |
+| `:Obsidian tomorrow` | Open tomorrow's daily note |
+| `:Obsidian new [TITLE]` | Create new note |
+| `:Obsidian search` | Search notes (Telescope) |
+| `:Obsidian quick_switch` | Switch to another note |
+| `:Obsidian template` | Insert template |
+| `:Obsidian backlinks` | Show backlinks to current note |
+| `:Obsidian links` | Show links in current note |
+| `:Obsidian toc` | Table of contents |
+| `:Obsidian rename` | Rename note (updates backlinks) |
+| `:Obsidian paste_img` | Paste image from clipboard |
+
+> Completion: Type `[[` for note links, `#` for tags.
+
 ## Directory Structure
 
 ```
