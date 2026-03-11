@@ -151,6 +151,20 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- LSP toggle (stop/start)
+          map('<leader>tl', function()
+            local clients = vim.lsp.get_clients { bufnr = event.buf }
+            if #clients > 0 then
+              for _, c in ipairs(clients) do
+                c:stop()
+              end
+              vim.notify('LSP stopped', vim.log.levels.INFO)
+            else
+              vim.cmd 'edit'
+              vim.notify('LSP started', vim.log.levels.INFO)
+            end
+          end, '[T]oggle [L]SP')
         end,
       })
 

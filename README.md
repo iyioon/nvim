@@ -350,6 +350,7 @@ Leader key: `<Space>`
 |-----|-------------|
 | `<leader>tc` | Toggle treesitter context |
 | `<leader>th` | Toggle inlay hints (LSP) |
+| `<leader>tl` | Toggle LSP (stop/start) |
 | `<leader>tz` | Toggle zen mode |
 | `<leader>ts` | Toggle spell check |
 | `<leader>tp` | Toggle Copilot |
