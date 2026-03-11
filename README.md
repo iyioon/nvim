@@ -262,6 +262,7 @@ Leader key: `<Space>`
 | `<leader>sg` | Search by grep (multigrep*) |
 | `<leader>sh` | Search help tags |
 | `<leader>sk` | Search keymaps |
+| `<leader>sc` | Search commands |
 | `<leader>sw` | Search current word |
 | `<leader>sd` | Search diagnostics |
 | `<leader>sr` | Resume last search |
