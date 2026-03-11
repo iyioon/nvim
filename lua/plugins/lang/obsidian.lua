@@ -65,9 +65,7 @@ return {
         ---@param note obsidian.Note
         func = function(note)
           local out = {
-            id = note.id,
             aliases = note.aliases,
-            tags = note.tags,
           }
 
           -- Add created timestamp for new notes
@@ -91,7 +89,7 @@ return {
 
           return out
         end,
-        sort = { 'id', 'aliases', 'tags', 'created', 'modified' },
+        sort = { 'aliases', 'created', 'modified' },
       },
 
       -- Use blink.cmp for completion
