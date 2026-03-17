@@ -26,10 +26,35 @@ return {
     },
   },
 
-  -- Add more servers here as needed:
-  --
   -- Python
-  -- pyright = {},
+  pyright = {
+    settings = {
+      pyright = {
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          typeCheckingMode = 'off',
+          useLibraryCodeForTypes = false,
+          exclude = {
+            '**/__pycache__',
+            '**/.git',
+            '**/.mypy_cache',
+            '**/.pytest_cache',
+            '**/.ruff_cache',
+            '**/.venv',
+            '**/venv',
+            '**/env',
+            '**/node_modules',
+            '**/build',
+            '**/dist',
+          },
+        },
+      },
+    },
+  },
+
+  -- Add more servers here as needed:
   --
   -- TypeScript/JavaScript
   -- ts_ls = {},
