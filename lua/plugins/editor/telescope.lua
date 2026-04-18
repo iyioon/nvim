@@ -22,7 +22,22 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      local actions = require 'telescope.actions'
+
       require('telescope').setup {
+        defaults = {
+          path_display = { 'smart' },
+          mappings = {
+            i = {
+              ['<C-u>'] = actions.preview_scrolling_up,
+              ['<C-d>'] = actions.preview_scrolling_down,
+            },
+            n = {
+              ['<C-u>'] = actions.preview_scrolling_up,
+              ['<C-d>'] = actions.preview_scrolling_down,
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
