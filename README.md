@@ -1,6 +1,6 @@
 # iyioon/nvim
 
-A modular Neovim configuration extended from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Features a clean structure, modern plugins, and sensible defaults for a productive editing experience.
+A modular personal Neovim configuration for Neovim `0.12.1+`. It keeps the setup split by concern, uses `lazy.nvim` for plugin management, and focuses on a practical editor/LSP workflow instead of a starter-template layout.
 
 ## Installation
 
@@ -420,7 +420,6 @@ Then add the server to the `ensure_installed` list in `lua/plugins/lsp/init.lua`
 ## Resources
 
 - [Neovim Documentation](https://neovim.io/doc/)
-- [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) - Original base configuration
 - [lazy.nvim](https://lazy.folke.io/) - Plugin manager
 - [Mason.nvim](https://github.com/mason-org/mason.nvim) - LSP/tool installer
 - [The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)

@@ -10,7 +10,7 @@ assignees: ''
 <!-- Any bug report not following this template will be immediately closed. Thanks -->
 
 ## Before Reporting an Issue
-- I have read the kickstart.nvim README.md.
+- I have read this repository's README.md.
 - I have read the appropriate plugin's documentation.
 - I have searched that this issue has not been reported before.
 
