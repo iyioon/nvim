@@ -8,7 +8,7 @@
 return {
   {
     'folke/which-key.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     opts = {
       delay = 0,
       icons = {

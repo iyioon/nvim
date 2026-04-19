@@ -8,7 +8,8 @@
 return {
   {
     'folke/todo-comments.nvim',
-    event = 'VimEnter',
+    event = { 'BufReadPost', 'BufNewFile' },
+    cmd = { 'TodoQuickFix', 'TodoLocList', 'TodoTelescope', 'TodoTrouble' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
   },

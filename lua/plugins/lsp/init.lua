@@ -5,6 +5,8 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- ============================================================================
 
+local lsp_events = { 'BufReadPre', 'BufNewFile' }
+
 return {
   -- Lazydev for Neovim Lua development
   {
@@ -20,12 +22,15 @@ return {
   -- Mason - Package manager for LSP servers, DAP, linters, formatters
   {
     'mason-org/mason.nvim',
+    cmd = { 'Mason', 'MasonInstall', 'MasonUpdate', 'MasonUninstall', 'MasonLog' },
+    event = lsp_events,
     opts = {},
   },
 
   -- Mason LSP Config - Bridges mason.nvim with lspconfig
   {
     'mason-org/mason-lspconfig.nvim',
+    event = lsp_events,
     dependencies = {
       'mason-org/mason.nvim',
       'neovim/nvim-lspconfig',
@@ -39,6 +44,7 @@ return {
   -- Mason Tool Installer - Auto-install LSP servers, formatters, linters
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    event = lsp_events,
     dependencies = { 'mason-org/mason.nvim' },
     opts = {
       ensure_installed = {
@@ -65,6 +71,7 @@ return {
   -- Fidget - LSP progress notifications
   {
     'j-hui/fidget.nvim',
+    event = lsp_events,
     opts = {
       notification = {
         window = {
@@ -78,6 +85,7 @@ return {
   -- Main LSP configuration
   {
     'neovim/nvim-lspconfig',
+    event = lsp_events,
     dependencies = {
       'mason-org/mason-lspconfig.nvim',
       'saghen/blink.cmp',
@@ -114,13 +122,13 @@ return {
           -- LSP keymaps
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('grr', function() require('telescope.builtin').lsp_references() end, '[G]oto [R]eferences')
+          map('gri', function() require('telescope.builtin').lsp_implementations() end, '[G]oto [I]mplementation')
+          map('grd', function() require('telescope.builtin').lsp_definitions() end, '[G]oto [D]efinition')
           map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+          map('gO', function() require('telescope.builtin').lsp_document_symbols() end, 'Open Document Symbols')
+          map('gW', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
+          map('grt', function() require('telescope.builtin').lsp_type_definitions() end, '[G]oto [T]ype Definition')
 
           -- Document highlight
           local client = vim.lsp.get_client_by_id(event.data.client_id)
