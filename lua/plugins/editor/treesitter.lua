@@ -2,7 +2,7 @@
 -- Treesitter
 -- ============================================================================
 -- Syntax highlighting, indentation, and code understanding.
--- https://github.com/nvim-treesitter/nvim-treesitter
+-- https://github.com/neovim-treesitter/nvim-treesitter
 --
 -- NOTE: This uses the new nvim-treesitter API (main branch, 2024+).
 -- The old API using require('nvim-treesitter.configs') is deprecated.
@@ -32,8 +32,8 @@ local ensure_installed = {
 
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'main', -- Use new API (main branch)
+    'neovim-treesitter/nvim-treesitter',
+    dependencies = { 'neovim-treesitter/treesitter-parser-registry' },
     lazy = false,
     build = ':TSUpdate',
     config = function()
@@ -77,7 +77,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufReadPre',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { 'neovim-treesitter/nvim-treesitter' },
     opts = {
       enable = true,
       max_lines = 0,

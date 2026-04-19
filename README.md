@@ -107,6 +107,7 @@ git clone https://github.com/iyioon/nvim.git "${env:LOCALAPPDATA}\nvim"
 2. Lazy.nvim will automatically install all plugins
 3. Run `:Lazy` to check plugin status
 4. Run `:Mason` to manage LSP servers
+5. Plugin revisions are tracked in `lazy-lock.json`; on another machine you can run `:Lazy restore` to match the committed state
 
 ### Install Recipes
 

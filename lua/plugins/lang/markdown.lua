@@ -9,7 +9,9 @@ return {
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
     init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
@@ -27,7 +29,7 @@ return {
   -- Render markdown in buffer
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
+    dependencies = { 'neovim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
