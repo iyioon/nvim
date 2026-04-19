@@ -21,25 +21,7 @@ return {
         completion = {
           callSnippet = 'Replace',
         },
-        -- diagnostics = { disable = { 'missing-fields' } },
       },
     },
   },
-
-  -- Add more servers here as needed:
-  --
-  -- Python
-  -- pyright = {},
-  --
-  -- TypeScript/JavaScript
-  -- ts_ls = {},
-  --
-  -- Rust
-  -- rust_analyzer = {},
-  --
-  -- Go
-  -- gopls = {},
-  --
-  -- C/C++
-  -- clangd = {},
 }

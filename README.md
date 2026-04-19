@@ -7,7 +7,7 @@ A modular Neovim configuration extended from [kickstart.nvim](https://github.com
 ### Prerequisites
 
 **Required:**
-- [Neovim](https://neovim.io/) 0.10+ (0.11+ recommended) - `brew install neovim`
+- [Neovim](https://neovim.io/) 0.12.1+ - `brew install neovim`
 - Git - `brew install git`
 - A C compiler (`gcc` or `clang`) - `brew install gcc`
 - `make` (for building some plugins) - `brew install make`
@@ -208,7 +208,7 @@ sudo apt install -y nodejs
 
 ### LSP & Formatting
 - **Mason** - Auto-install LSP servers, formatters, linters
-- **nvim-lspconfig** - LSP configuration (Neovim 0.11+ native API)
+- **nvim-lspconfig** - LSP configuration (Neovim 0.12+ native API)
 - **Conform** - Code formatting with per-filetype formatters
 - **Fidget** - LSP progress notifications
 
@@ -360,7 +360,6 @@ Leader key: `<Space>`
 
 | Key | Description |
 |-----|-------------|
-| `<leader>f` | Format with markdownlint-cli2 |
 | `<leader>mp` | Toggle browser preview |
 | `<leader>mr` | Toggle in-buffer render |
 

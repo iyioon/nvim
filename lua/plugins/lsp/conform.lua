@@ -22,32 +22,13 @@ return {
     },
     opts = {
       notify_on_error = false,
-      -- Uncomment to enable format on save:
-      -- format_on_save = function(bufnr)
-      --   local disable_filetypes = { c = true, cpp = true }
-      --   if disable_filetypes[vim.bo[bufnr].filetype] then
-      --     return nil
-      --   else
-      --     return { timeout_ms = 500, lsp_format = 'fallback' }
-      --   end
-      -- end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        markdown = { 'markdownlint-cli2' },
         html = { 'prettier' },
         css = { 'prettier' },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
         python = { 'isort', 'black' },
-        -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      },
-      formatters = {
-        ['markdownlint-cli2'] = {
-          prepend_args = {
-            '--config',
-            vim.fn.stdpath 'config' .. '/.markdownlint.yaml',
-          },
-        },
       },
     },
   },

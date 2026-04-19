@@ -56,7 +56,6 @@ return {
         -- Formatters
         'stylua', -- Lua formatter
         'prettier', -- JS/TS/CSS/HTML/JSON/Markdown formatter
-        'markdownlint-cli2', -- Markdown linter/formatter
         'isort', -- Python import sorter
         'black', -- Python formatter
       },
@@ -97,7 +96,7 @@ return {
       -- Set default capabilities for all LSP servers
       vim.lsp.config('*', { capabilities = capabilities })
 
-      -- Configure each server using vim.lsp.config (Neovim 0.11+)
+      -- Configure each server using vim.lsp.config (Neovim 0.12+)
       for server_name, server_config in pairs(servers) do
         server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
         vim.lsp.config[server_name] = server_config
