@@ -10,9 +10,6 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      -- Disable mini.statusline
-      vim.g.ministatusline_disable = true
-
       -- Custom filename component with modified status colors
       local custom_fname = require('lualine.components.filename'):extend()
       local highlight = require 'lualine.highlight'

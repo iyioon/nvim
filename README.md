@@ -11,7 +11,7 @@ A modular personal Neovim configuration for Neovim `0.12.1+`. It keeps the setup
 - Git - `brew install git`
 - A C compiler (`gcc` or `clang`) - `brew install gcc`
 - `make` (for building some plugins) - `brew install make`
-- [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) 0.26.1+ - required for nvim-treesitter parser installation - `brew install tree-sitter-cli`
+- [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) 0.26.1+ - required for nvim-treesitter parser installation; install it via your system package manager - `brew install tree-sitter-cli`
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - `brew install ripgrep`
 - [fd](https://github.com/sharkdp/fd#installation) - `brew install fd`
 - `curl` - for downloading packages (Mason, Treesitter)
@@ -130,7 +130,6 @@ sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
 
 # tree-sitter CLI (required for nvim-treesitter)
 cargo install tree-sitter-cli
-# Or via npm: npm install -g tree-sitter-cli
 
 # Node.js v22+ (for Copilot and LSP servers)
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
@@ -146,7 +145,6 @@ sudo dnf install -y gcc make git ripgrep fd-find unzip curl xclip neovim nodejs
 
 # tree-sitter CLI (required for nvim-treesitter)
 cargo install tree-sitter-cli
-# Or via npm: npm install -g tree-sitter-cli
 ```
 
 </details>
@@ -167,7 +165,7 @@ Run as Administrator:
 choco install -y neovim git ripgrep wget fd unzip gzip mingw make curl nodejs
 
 # tree-sitter CLI (required for nvim-treesitter)
-npm install -g tree-sitter-cli
+REM Install tree-sitter CLI using a non-npm package source before first startup
 ```
 
 Then install a [Nerd Font](https://www.nerdfonts.com/font-downloads) manually or via:
@@ -188,7 +186,6 @@ sudo apt install make gcc ripgrep unzip git xclip curl neovim fd-find
 
 # tree-sitter CLI (required for nvim-treesitter)
 cargo install tree-sitter-cli
-# Or via npm: npm install -g tree-sitter-cli
 
 # Node.js v22+ (for Copilot and LSP servers)
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
@@ -205,7 +202,7 @@ sudo apt install -y nodejs
 - **Blink.cmp** - Fast autocompletion with LSP and snippets
 - **LuaSnip** - Snippet engine with friendly-snippets
 - **Which-Key** - Keymap hints popup
-- **Mini.nvim** - Text objects, surround, statusline
+- **Mini.nvim** - Text objects and surround helpers
 
 ### LSP & Formatting
 - **Mason** - Auto-install LSP servers, formatters, linters

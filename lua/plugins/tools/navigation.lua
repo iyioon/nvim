@@ -27,10 +27,6 @@ return {
     keys = {
       { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' }, desc = 'Align Text' },
     },
-    config = function()
-      vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
-      vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
-    end,
   },
 
   -- Auto Tag - Close HTML/XML tags automatically
