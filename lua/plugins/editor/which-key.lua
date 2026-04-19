@@ -55,6 +55,7 @@ return {
         { '<leader>n', group = '[N]ew' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>u', group = '[U]ndo' },
         { 'gr', group = 'LSP' },
         { 'gs', group = '[S]urround' },
       },

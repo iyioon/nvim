@@ -72,6 +72,7 @@ Plugin revisions are tracked in `lazy-lock.json`. On another machine, `:Lazy res
 - Treesitter for syntax-aware highlighting and indentation
 - Telescope for search, grep, buffers, commands, and help
 - Blink completion with LuaSnip snippets
+- Builtin Neovim `0.12` incremental selection on Visual `an` / `in`
 - Mini textobjects and surround mappings
 - Guess-indent and autopairs
 
@@ -110,6 +111,7 @@ Leader key: `<Space>`
 |-----|-------------|
 | `<leader>bd` | Close buffer |
 | `<leader>q` | Open diagnostics list |
+| `<leader>uu` | Toggle builtin undo tree |
 | `<C-h/j/k/l>` | Move between windows |
 | `<leader>ts` | Toggle spell check |
 
@@ -158,6 +160,7 @@ Example: `function  *.lua`
 |-----|-------------|
 | `s` | Flash jump |
 | `S` | Flash Treesitter jump |
+| Visual `an` / `in` | Incremental Treesitter or LSP selection |
 | `ga` | EasyAlign |
 | `gsa` / `gsd` / `gsr` | Surround add, delete, replace |
 | `zR` / `zM` | Open or close all folds |

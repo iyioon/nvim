@@ -38,3 +38,12 @@ vim.keymap.set({ 'n', 'v' }, '$', 'g$', { desc = 'Visual line end' })
 vim.keymap.set('n', '<leader>ts', function()
   vim.wo.spell = not vim.wo.spell
 end, { desc = '[T]oggle [S]pell' })
+
+vim.api.nvim_create_user_command('Undotree', function()
+  vim.cmd.packadd 'nvim.undotree'
+  require('undotree').open {
+    command = 'botright 35vnew',
+  }
+end, { desc = 'Toggle builtin undo tree' })
+
+vim.keymap.set('n', '<leader>uu', '<cmd>Undotree<CR>', { desc = '[U]ndo Tree' })

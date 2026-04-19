@@ -14,7 +14,14 @@ return {
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
+      require('mini.ai').setup {
+        n_lines = 500,
+        mappings = {
+          -- Keep Neovim 0.12 builtin incremental selection on `an` / `in`.
+          around_next = '',
+          inside_next = '',
+        },
+      }
     end,
   },
 
